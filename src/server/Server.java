@@ -1,4 +1,4 @@
-package src.server;
+package server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -29,7 +29,7 @@ public class Server {
 
                 // 获取或创建房间
                 Room room = getOrCreateRoom("General");
-                ClientHandler clientHandler=new ClientHandler(clientSocket, room);
+                ClientHandler clientHandler = new ClientHandler(clientSocket, room);
                 // 将客户端加入房间
                 room.addClient(clientHandler);
             } catch (IOException e) {
