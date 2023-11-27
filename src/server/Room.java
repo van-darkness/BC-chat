@@ -7,10 +7,12 @@ import java.util.*;
 public class Room implements Runnable {
     private String name;
     private List<ClientHandler> clients;
+    private boolean running;
 
     public Room(String name) {
         this.name = name;
         this.clients = new ArrayList<>();
+        this.running = false;
     }
 
     public String getName() {
@@ -40,5 +42,17 @@ public class Room implements Runnable {
     // 移除房间内的客户端
     public void removeClient(ClientHandler client) {
         clients.remove(client);
+    }
+
+    public synchronized void start() {
+        running = true;
+    }
+
+    public synchronized void stop() {
+        running = false;
+    }
+
+    public synchronized boolean isRunning() {
+        return running;
     }
 }

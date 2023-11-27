@@ -23,16 +23,19 @@ public class Server {
     public void start() {
         while (true) {
             try {
-                // 等待客户端连接
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("New client connected: " + clientSocket.getInetAddress().getHostAddress());
-                // 获取账号密码输入
-                // 匹配账号密码
-                // 获取或创建房间
+
                 Room room = getOrCreateRoom("General");
                 ClientHandler clientHandler = new ClientHandler(clientSocket, room);
+
                 // 将客户端加入房间
                 room.addClient(clientHandler);
+
+                // 如果房间的线程还没有启动，启动它
+                if (!room.isRunning()) {
+                    new Thread(room).start();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -45,15 +48,14 @@ public class Server {
                 return room;
             }
         }
-        // 如果房间不存在，创建新房间并启动线程
+        // 如果房间不存在，创建新房间但不启动线程
         Room newRoom = new Room(roomName);
         rooms.add(newRoom);
-        new Thread(newRoom).start();
         return newRoom;
     }
 
     public static void main(String[] args) {
-        int port = 8888; // 服务器端口
+        int port = 8888;
         Server server = new Server(port);
         server.start();
     }
