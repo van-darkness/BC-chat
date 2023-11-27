@@ -1,6 +1,7 @@
 package server;
 
 import java.util.*;
+
 public class Lobby {
     private List<Room> rooms;
 
@@ -51,5 +52,4 @@ public class Lobby {
         }
     }
 
-    
 }

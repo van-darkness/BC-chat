@@ -4,7 +4,7 @@ public class User {
     private String nickname;
     private String account;
     private String password;
-    private String role;  // 身份，可以是管理员或用户
+    private String role; // 身份，可以是管理员或用户
 
     // 构造方法
     public User(String nickname, String account, String password, String role) {
