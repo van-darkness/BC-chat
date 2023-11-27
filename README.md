@@ -17,7 +17,7 @@
 
 ```bash
 # 示例命令
-git clone https://github.com/your-username/BC-chat_beta.git
+git clone https://github.com/van-darkness/BC-chat_beta.git
 cd BC-chat_beta
 npm install
 npm start
