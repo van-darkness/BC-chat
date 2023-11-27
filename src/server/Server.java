@@ -26,7 +26,8 @@ public class Server {
                 // 等待客户端连接
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("New client connected: " + clientSocket.getInetAddress().getHostAddress());
-
+                // 获取账号密码输入
+                // 匹配账号密码
                 // 获取或创建房间
                 Room room = getOrCreateRoom("General");
                 ClientHandler clientHandler = new ClientHandler(clientSocket, room);
