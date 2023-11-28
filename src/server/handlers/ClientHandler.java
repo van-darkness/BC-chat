@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
 
-import server.entrance.Room;
+import server.space.Room;
 
 public class ClientHandler implements Runnable {
     private Socket clientSocket;
