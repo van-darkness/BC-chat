@@ -6,6 +6,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+import server.entrance.Room;
+import server.handlers.ClientHandler;
+
 public class Server {
     private ServerSocket serverSocket;
     private List<Room> rooms;
