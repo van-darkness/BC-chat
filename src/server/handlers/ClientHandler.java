@@ -1,9 +1,11 @@
-package server;
+package server.handlers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+
+import server.entrance.Room;
 
 public class ClientHandler implements Runnable {
     private Socket clientSocket;

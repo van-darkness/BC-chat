@@ -1,8 +1,8 @@
-package server;
+package server.entrance;
 
-import java.io.*;
-import java.net.*;
 import java.util.*;
+
+import server.handlers.ClientHandler;
 
 public class Room implements Runnable {
     private String name;
