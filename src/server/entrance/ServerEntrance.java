@@ -17,8 +17,13 @@ public class ServerEntrance implements Runnable {
     PrintWriter writer;
     Scanner reader;
 
-    public ServerEntrance(ServerSocket serverSocket) {
-        this.serverSocket = serverSocket;
+    public ServerEntrance(int port) {
+        try {
+            this.serverSocket = new ServerSocket(port);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,6 +1,6 @@
 package client;
 
-import data.User;
+import data.user.User;
 
 public class Client {
     User user;

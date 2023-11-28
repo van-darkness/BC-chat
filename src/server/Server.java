@@ -10,6 +10,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
+import server.entrance.ServerEntrance;
 import server.handlers.ClientHandler;
 import server.space.Room;
 
@@ -19,23 +20,15 @@ public class Server {
     private InetAddress computer;
 
     public Server(int port) {
-        try {
-            computer = InetAddress.getLocalHost();
-        } catch (UnknownHostException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        rooms = new ArrayList<>();
-        try {
-            serverSocket = new ServerSocket(port);
-            System.out.println("Server is running on port " + port);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // ServerEntrance类实现用户进入并登录，通过多个入口线程并使用线程池技术来实现大量用户的接入
+        // 暂时使用单个入口进行用户接入
+        ServerEntrance entrance = new ServerEntrance(port);
+        Thread entrance_run = new Thread(entrance);
+        entrance_run.start();
     }
 
     public void start() {
-        // ServerEntrance类实现用户进入并登录，通过多个入口线程并使用线程池技术来实现大量用户的接入
+
         while (true) {
             try {
                 Socket clientSocket = serverSocket.accept();
