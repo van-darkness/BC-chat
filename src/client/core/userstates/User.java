@@ -1,5 +1,9 @@
 package client.data.user;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class User {
     private String nickname;
     private String account;
@@ -65,21 +69,20 @@ public class User {
         return "管理员".equals(role);
     }
 
-    public static void main(String[] args) {
-        // 创建一个用户实例
-        User user1 = new User("Alice", "alice123", "password123", "用户");
-
-        // 输出用户信息
-        System.out.println(user1);
-
-        // 修改昵称和密码
-        user1.setNickname("Alicia");
-        user1.setPassword("newPassword456");
-
-        // 输出修改后的用户信息
-        System.out.println(user1);
-
-        // 示例：检查用户是否是管理员
-        System.out.println("Is admin? " + user1.isAdmin());
+    // 将用户信息保存到文件
+    public void saveToFile() {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("User.txt", true))) {
+            // 格式化用户信息，以制表符分隔
+            String userInfo = role + "\t" + nickname + "\t" + account + "\t" + password;
+            // 写入文件并换行
+            writer.write(userInfo);
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void main(String[] args){
+User bigcousin=new User("1","2","3","4");
+bigcousin.saveToFile();
     }
 }
