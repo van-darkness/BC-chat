@@ -1,13 +1,13 @@
 package client.core;
 
-import client.data.user.User;
+import client.core.userstates.UserState;
 
 public class Core {
     // Core类是客户端的内核，主要实现从用户系统输入流接受输入，对接服务端并接收信息，但不必显示信息
     // 显示信息的功能由GUI模块完成
 
     private ServerConnection serverConnection;
-    private User user;
+    private UserState userState;
 
     // 构造方法，初始化时需要传入一个ServerConnection对象
     public Core(String serverAddress, int port) {

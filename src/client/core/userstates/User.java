@@ -1,4 +1,4 @@
-package client.data.user;
+package client.core.userstates;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
