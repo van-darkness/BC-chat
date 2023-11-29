@@ -2,7 +2,7 @@ package server.space;
 
 import java.util.*;
 
-import client.Client;
+import client.ClientAPP;
 import server.handlers.ClientHandler;
 
 public class Room implements Runnable {
@@ -44,7 +44,7 @@ public class Room implements Runnable {
     }
 
     // 接收某位用户的信息并向同房间里的人发送信息
-    private void clientMessage(String message, Client client) {
+    private void clientMessage(String message, ClientAPP client) {
 
     }
 

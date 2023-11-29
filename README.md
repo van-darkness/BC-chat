@@ -15,18 +15,6 @@
 - chatGPT
 - New Bing 
 ## 项目结构
-
-## 如何开始
-
-
-
-```bash
-# 示例命令
-git clone https://github.com/van-darkness/BC-chat_beta.git
-cd BC-chat_beta
-npm install
-npm start
-
 ```
 BC-chat_beta
 ├─ docs
@@ -82,5 +70,18 @@ BC-chat_beta
 │        └─ Room.java
 └─ test
    └─ Test.java
+```
+
+## 如何开始
+
+
+
+```bash
+# 示例命令
+git clone https://github.com/van-darkness/BC-chat_beta.git
+cd BC-chat_beta
+npm install
+npm start
 
 ```
+

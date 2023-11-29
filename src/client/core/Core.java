@@ -18,6 +18,10 @@ public class Core {
         }
     }
 
+    public void start() {
+
+    }
+
     // 处理用户输入并发送到服务器的方法
     public void sendUserInput(String userInput) {
         // 验证和处理用户输入（如果需要的话）
