@@ -1,4 +1,4 @@
-package data.user;
+package client.data.user;
 
 public class User {
     private String nickname;

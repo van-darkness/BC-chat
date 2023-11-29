@@ -1,7 +1,7 @@
 package client;
 
 import client.core.Core;
-import data.user.User;
+import client.data.user.User;
 
 public class ClientAPP {
     public static void main(String[] args) {
