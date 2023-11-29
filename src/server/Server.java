@@ -20,6 +20,14 @@ public class Server {
     private InetAddress computer;
 
     public Server(int port) {
+        try {
+            computer = InetAddress.getLocalHost();
+            System.out.println("服务器地址：" + computer + "端口：" + port);
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
         // ServerEntrance类实现用户进入并登录，通过多个入口线程并使用线程池技术来实现大量用户的接入
         // 暂时使用单个入口进行用户接入
         ServerEntrance entrance = new ServerEntrance(port);
@@ -65,6 +73,6 @@ public class Server {
     public static void main(String[] args) {
         int port = 8888;
         Server server = new Server(port);
-        server.start();
+        // server.start();
     }
 }
