@@ -3,7 +3,7 @@ package main.java.com.bigcousin.chatroom.client.user;
 public class InRoomStatus extends UserCore implements UserStatus {
 
     @Override
-    public void login() {
+    public void login(String serverAddress, int port) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'login'");
     }

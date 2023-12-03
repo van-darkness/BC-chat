@@ -3,9 +3,10 @@ package main.java.com.bigcousin.chatroom.client.user;
 public class NotInRoomStatus extends UserCore implements UserStatus {
 
     @Override
-    public void login() {
+    public void login(String serverAddress, int port) {
+        super.serverAddress = serverAddress;
         // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'login'");
+        // throw new UnsupportedOperationException("Unimplemented method 'login'");
     }
 
     @Override

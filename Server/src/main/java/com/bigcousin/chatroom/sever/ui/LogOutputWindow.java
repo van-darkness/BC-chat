@@ -50,6 +50,7 @@ public class LogOutputWindow extends JFrame {
                 inputField.setText("");
             }
         });
+        setTitle("系统日志");
         // 设置窗口大小和关闭操作...
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

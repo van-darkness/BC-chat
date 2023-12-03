@@ -8,6 +8,11 @@ import main.java.com.bigcousin.chatroom.client.user.NotLoggedInStatus;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.logging.LogManager;
 
 public class LoginWindow extends JFrame {
@@ -101,7 +106,18 @@ public class LoginWindow extends JFrame {
         System.out.println("登录账号: " + acount);
         System.out.println("登录密码: " + password);
         LogInMessage messages = new LogInMessage(acount, password);
-
+        try {
+            notLoggedInStatus.setSocket(new Socket(notLoggedInStatus.getServerAddress(), notLoggedInStatus.getPort()));
+            OutputStream outputStream = notLoggedInStatus.getSocket().getOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
+            objectOutputStream.writeObject(messages);
+        } catch (UnknownHostException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         // 在这里可以添加验证逻辑，与服务器建立连接并且等待服务器响应
 
         // 清空密码框

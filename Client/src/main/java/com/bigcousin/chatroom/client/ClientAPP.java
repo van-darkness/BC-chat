@@ -10,14 +10,17 @@ import main.java.com.bigcousin.chatroom.client.user.UserStatus;
 public class ClientAPP {
     InetAddress computer;
     UserStatus userStatus;
+    String serverAddress;
+    int port;
 
-    public ClientAPP() {
+    public ClientAPP(String serverAddress, int port) {
+        this.port = port;
+        this.serverAddress = serverAddress;
         userStatus = new NotLoggedInStatus();
-        userStatus.login();
+        userStatus.login(serverAddress, port);
     }
 
     public static void main(String[] args) {
-        ClientAPP clientAPP = new ClientAPP();
+        ClientAPP clientAPP = new ClientAPP("172.22.164.242", 8888);
     }
-
 }

@@ -1,4 +1,4 @@
-package main.java.com.bigcousin.chatroom.client.messages;
+package main.java.com.bigcousin.chatroom.sever.message;
 
 import java.io.Serializable;
 

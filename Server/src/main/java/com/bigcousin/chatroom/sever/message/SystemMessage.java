@@ -18,6 +18,14 @@ public class SystemMessage {
         this.font = getDefaultFont();
     }
 
+    public SystemMessage(String string, MessageSource messageSource) {
+        content = string;
+        source = messageSource;
+        type = MessageType.INFO;
+        this.color = getDefaultColor(type);
+        this.font = getDefaultFont();
+    }
+
     public MessageType getType() {
         return type;
     }

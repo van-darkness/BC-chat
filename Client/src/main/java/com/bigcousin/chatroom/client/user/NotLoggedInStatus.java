@@ -1,18 +1,20 @@
 package main.java.com.bigcousin.chatroom.client.user;
 
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
 import javax.security.auth.login.LoginContext;
 
 import main.java.com.bigcousin.chatroom.client.messages.LogInMessage;
 import main.java.com.bigcousin.chatroom.client.ui.LoginWindow;
 
 public class NotLoggedInStatus extends UserCore implements UserStatus {
-    public NotLoggedInStatus() {
-
-    }
 
     // 未登录只需实现登陆操作
     @Override
-    public void login() {
+    public void login(String serverAddress, int port) {
+        this.port = port;
         LoginWindow loginWindow = new LoginWindow(this);
         // 先连接，后发送账号密码，等待服务器返回User类，然后转换状态
 
