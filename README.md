@@ -43,29 +43,92 @@ npm start
 
 ## 开发日志
 详见 开发日志.md
+## 项目结构
+### 客户端
 
 ```
-BC-chat_beta
-├─ .idea
-│  ├─ libraries
-│  │  └─ lib.xml
-│  ├─ misc.xml
-│  ├─ modules.xml
-│  ├─ vcs.xml
-│  └─ workspace.xml
-├─ BC-chat_beta.iml
-├─ docs
-│  ├─ client端开发注意事项.md
-│  ├─ DemandAnalysis.md
-│  ├─ image-1.png
-│  ├─ image-2.png
-│  ├─ image-3.png
-│  ├─ image-4.png
-│  ├─ image-5.png
-│  ├─ image-6.png
-│  ├─ image.png
-│  ├─ server端开发事项.md
-│  └─ 开发日志.md
+Client
+├─ .vscode
+│  └─ settings.json
+├─ bin
+│  └─ main
+│     └─ java
+│        └─ com
+│           └─ bigcousin
+│              └─ chatroom
+│                 └─ client
+│                    ├─ ClientAPP.class
+│                    ├─ messages
+│                    │  ├─ LogInMessage.class
+│                    │  └─ Message.class
+│                    ├─ ui
+│                    │  ├─ LoginWindow$1.class
+│                    │  └─ LoginWindow.class
+│                    └─ user
+│                       ├─ InRoomStatus.class
+│                       ├─ NotInRoomStatus.class
+│                       ├─ NotLoggedInStatus.class
+│                       ├─ ServerConnection.class
+│                       ├─ User.class
+│                       ├─ UserCore.class
+│                       └─ UserStatus.class
+├─ image.jpg
+├─ lib
+├─ REDEME.md
+└─ src
+   └─ main
+      └─ java
+         └─ com
+            └─ bigcousin
+               └─ chatroom
+                  └─ client
+                     ├─ ClientAPP.java
+                     ├─ messages
+                     │  ├─ LogInMessage.java
+                     │  └─ Message.java
+                     ├─ ui
+                     │  └─ LoginWindow.java
+                     └─ user
+                        ├─ InRoomStatus.java
+                        ├─ NotInRoomStatus.java
+                        ├─ NotLoggedInStatus.java
+                        ├─ ServerConnection.java
+                        ├─ User.java
+                        ├─ UserCore.java
+                        └─ UserStatus.java
+
+```
+### 服务端
+```
+Server
+├─ .vscode
+│  └─ settings.json
+├─ bin
+│  └─ main
+│     └─ java
+│        └─ com
+│           └─ bigcousin
+│              └─ chatroom
+│                 └─ sever
+│                    ├─ APP.class
+│                    ├─ authentication
+│                    │  ├─ User.class
+│                    │  ├─ UserHandler.class
+│                    │  └─ UserManager.class
+│                    ├─ ChatServer.class
+│                    ├─ entrance
+│                    │  └─ ServerEntrance.class
+│                    ├─ message
+│                    │  ├─ Message.class
+│                    │  ├─ MessageSource.class
+│                    │  ├─ MessageType.class
+│                    │  └─ SystemMessage.class
+│                    ├─ room
+│                    │  ├─ Room.class
+│                    │  └─ RoomManager.class
+│                    └─ ui
+│                       ├─ LogOutputWindow$1.class
+│                       └─ LogOutputWindow.class
 ├─ lib
 │  ├─ commons-codec-1.11.jar
 │  ├─ commons-logging-1.2.jar
@@ -79,103 +142,30 @@ BC-chat_beta
 │  ├─ jna-4.5.2.jar
 │  └─ jna-platform-4.5.2.jar
 ├─ README.md
-├─ README2.md
-├─ src
-│  ├─ client
-│  │  ├─ ClientAPP.java
-│  │  ├─ core
-│  │  │  ├─ Core.java
-│  │  │  ├─ ServerConnection.java
-│  │  │  └─ userstates
-│  │  │     └─ UserState.java
-│  │  ├─ data
-│  │  │  └─ user
-│  │  │     ├─ User.java
-│  │  │     └─ UserData.txt
-│  │  └─ gui
-│  └─ server
-│     ├─ data
-│     │  ├─ parameter
-│     │  ├─ room
-│     │  │  └─ RoomData.txt
-│     │  └─ server
-│     │     └─ ServerData.txt
-│     ├─ entrance
-│     │  └─ ServerEntrance.java
-│     ├─ handlers
-│     │  └─ ClientHandler.java
-│     ├─ Server.java
-│     └─ space
-│        ├─ Lobby.java
-│        └─ Room.java
-└─ test
-   └─ Test.java
-
-```
-```
-BC-chat_beta
-├─ .idea
-│  ├─ libraries
-│  │  └─ lib.xml
-│  ├─ misc.xml
-│  ├─ modules.xml
-│  ├─ vcs.xml
-│  └─ workspace.xml
-├─ BC-chat_beta.iml
-├─ docs
-│  ├─ client端开发注意事项.md
-│  ├─ DemandAnalysis.md
-│  ├─ image-1.png
-│  ├─ image-2.png
-│  ├─ image-3.png
-│  ├─ image-4.png
-│  ├─ image-5.png
-│  ├─ image-6.png
-│  ├─ image.png
-│  ├─ server端开发事项.md
-│  └─ 开发日志.md
-├─ lib
-│  ├─ commons-codec-1.11.jar
-│  ├─ commons-logging-1.2.jar
-│  ├─ fluent-hc-4.5.10.jar
-│  ├─ httpclient-4.5.10.jar
-│  ├─ httpclient-cache-4.5.10.jar
-│  ├─ httpclient-osgi-4.5.10.jar
-│  ├─ httpclient-win-4.5.10.jar
-│  ├─ httpcore-4.4.12.jar
-│  ├─ httpmime-4.5.10.jar
-│  ├─ jna-4.5.2.jar
-│  └─ jna-platform-4.5.2.jar
-├─ README.md
-├─ src
-│  ├─ client
-│  │  ├─ ClientAPP.java
-│  │  ├─ core
-│  │  │  ├─ Core.java
-│  │  │  ├─ ServerConnection.java
-│  │  │  └─ userstates
-│  │  │     └─ UserState.java
-│  │  ├─ data
-│  │  │  └─ user
-│  │  │     ├─ User.java
-│  │  │     └─ UserData.txt
-│  │  └─ gui
-│  └─ server
-│     ├─ data
-│     │  ├─ parameter
-│     │  ├─ room
-│     │  │  └─ RoomData.txt
-│     │  └─ server
-│     │     └─ ServerData.txt
-│     ├─ entrance
-│     │  └─ ServerEntrance.java
-│     ├─ handlers
-│     │  └─ ClientHandler.java
-│     ├─ Server.java
-│     └─ space
-│        ├─ Lobby.java
-│        └─ Room.java
-└─ test
-   └─ Test.java
+└─ src
+   └─ main
+      └─ java
+         └─ com
+            └─ bigcousin
+               └─ chatroom
+                  └─ sever
+                     ├─ APP.java
+                     ├─ authentication
+                     │  ├─ User.java
+                     │  ├─ UserHandler.java
+                     │  └─ UserManager.java
+                     ├─ ChatServer.java
+                     ├─ entrance
+                     │  └─ ServerEntrance.java
+                     ├─ message
+                     │  ├─ Message.java
+                     │  ├─ MessageSource.java
+                     │  ├─ MessageType.java
+                     │  └─ SystemMessage.java
+                     ├─ room
+                     │  ├─ Room.java
+                     │  └─ RoomManager.java
+                     └─ ui
+                        └─ LogOutputWindow.java
 
 ```
