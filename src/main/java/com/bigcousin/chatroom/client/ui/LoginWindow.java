@@ -3,6 +3,7 @@ package main.java.com.bigcousin.chatroom.client.ui;
 import javax.swing.*;
 
 import main.java.com.bigcousin.chatroom.data.user.NotLoggedInStatus;
+import main.java.com.bigcousin.chatroom.server.message.LogInMessage;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
