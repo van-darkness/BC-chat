@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3c8a9b1e-9e19-4dd3-b78a-828990978310" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/entrance/ServerEntrance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/message/LogInMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/message/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BC-chat_beta.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BC-chat_beta.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/ClientAPP.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/messages/LogInMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/messages/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/ui/LoginWindow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/ui/LoginWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/user/InRoomStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/user/NotInRoomStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/user/NotLoggedInStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/user/ServerConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/user/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/user/UserCore.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/bin/main/java/com/bigcousin/chatroom/client/user/UserStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/ClientAPP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/messages/LogInMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/messages/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/ui/LoginWindow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/user/InRoomStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/user/NotInRoomStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/user/NotLoggedInStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/user/ServerConnection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/user/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/user/UserCore.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/src/main/java/com/bigcousin/chatroom/client/user/UserStatus.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/APP.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/ChatServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/authentication/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/authentication/UserHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/authentication/UserManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/entrance/ServerEntrance.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/message/LogInMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/message/Message.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/message/MessageSource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/message/MessageType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/message/SystemMessage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/room/Room.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/room/RoomManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/ui/LogOutputWindow$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/bin/main/java/com/bigcousin/chatroom/sever/ui/LogOutputWindow.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/commons-codec-1.11.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/commons-logging-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/fluent-hc-4.5.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/httpclient-4.5.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/httpclient-cache-4.5.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/httpclient-osgi-4.5.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/httpclient-win-4.5.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/httpcore-4.4.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/httpmime-4.5.10.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/jna-4.5.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/lib/jna-platform-4.5.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/APP.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/ChatServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/authentication/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/authentication/UserHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/authentication/UserManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/entrance/ServerEntrance.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/message/LogInMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/message/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/message/MessageSource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/message/MessageType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/message/SystemMessage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/room/Room.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/room/RoomManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Server/src/main/java/com/bigcousin/chatroom/sever/ui/LogOutputWindow.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2Z3aaMgpYb81A7I6NaxzndQXmXk" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "beta",
+    "last_opened_file_path": "D:/code/github/BC chat/beta/BC-chat_beta/src/main/java/com/bigcousin/chatroom/server/entrance",
+    "settings.editor.selected.configurable": "vcs.Git"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\github\BC chat\beta\BC-chat_beta\src\main\java\com\bigcousin\chatroom\server\entrance" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="3c8a9b1e-9e19-4dd3-b78a-828990978310" name="更改" comment="" />
+      <created>1701653281110</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1701653281110</updated>
+    </task>
+    <servers />
+  </component>
+</project>
