@@ -40,12 +40,18 @@ npm start
 ## 开发日志
 详见 开发日志.md
 ## 项目结构
-### 客户端
 
 ```
-Client
+BC-chat_beta
+├─ .idea
+│  ├─ misc.xml
+│  ├─ modules.xml
+│  ├─ uiDesigner.xml
+│  ├─ vcs.xml
+│  └─ workspace.xml
 ├─ .vscode
 │  └─ settings.json
+├─ BC-chat_beta.iml
 ├─ bin
 │  └─ main
 │     └─ java
@@ -68,92 +74,123 @@ Client
 │                       ├─ User.class
 │                       ├─ UserCore.class
 │                       └─ UserStatus.class
+├─ docs
+│  ├─ client端开发注意事项.md
+│  ├─ DemandAnalysis.md
+│  ├─ image-1.png
+│  ├─ image-2.png
+│  ├─ image-3.png
+│  ├─ image-4.png
+│  ├─ image-5.png
+│  ├─ image-6.png
+│  ├─ image.png
+│  ├─ server端开发事项.md
+│  └─ 开发日志.md
 ├─ image.jpg
-├─ lib
-├─ REDEME.md
-└─ src
-   └─ main
-      └─ java
-         └─ com
-            └─ bigcousin
-               └─ chatroom
-                  └─ client
-                     ├─ ClientAPP.java
-                     ├─ messages
-                     │  ├─ LogInMessage.java
-                     │  └─ Message.java
-                     ├─ ui
-                     │  └─ LoginWindow.java
-                     └─ user
-                        ├─ InRoomStatus.java
-                        ├─ NotInRoomStatus.java
-                        ├─ NotLoggedInStatus.java
-                        ├─ ServerConnection.java
-                        ├─ User.java
-                        ├─ UserCore.java
-                        └─ UserStatus.java
-
-```
-### 服务端
-```
-Server
-├─ .vscode
-│  └─ settings.json
-├─ bin
-│  └─ main
-│     └─ java
-│        └─ com
-│           └─ bigcousin
-│              └─ chatroom
-│                 └─ sever
-│                    ├─ APP.class
-│                    ├─ authentication
-│                    │  ├─ User.class
-│                    │  ├─ UserHandler.class
-│                    │  └─ UserManager.class
-│                    ├─ ChatServer.class
-│                    ├─ entrance
-│                    │  └─ ServerEntrance.class
-│                    ├─ message
-│                    │  ├─ Message.class
-│                    │  ├─ MessageSource.class
-│                    │  ├─ MessageType.class
-│                    │  └─ SystemMessage.class
-│                    ├─ room
-│                    │  ├─ Room.class
-│                    │  └─ RoomManager.class
-│                    └─ ui
-│                       ├─ LogOutputWindow$1.class
-│                       └─ LogOutputWindow.class
-├─ lib
-│  ├─ commons-codec-1.11.jar
-│  ├─ commons-logging-1.2.jar
-│  ├─ fluent-hc-4.5.10.jar
-│  ├─ httpclient-4.5.10.jar
-│  ├─ httpclient-cache-4.5.10.jar
-│  ├─ httpclient-osgi-4.5.10.jar
-│  ├─ httpclient-win-4.5.10.jar
-│  ├─ httpcore-4.4.12.jar
-│  ├─ httpmime-4.5.10.jar
-│  ├─ jna-4.5.2.jar
-│  └─ jna-platform-4.5.2.jar
+├─ out
+│  └─ production
+│     ├─ BC-chat_beta
+│     │  └─ main
+│     │     └─ java
+│     │        └─ com
+│     │           └─ bigcousin
+│     │              └─ chatroom
+│     │                 ├─ client
+│     │                 │  ├─ ClientAPP.class
+│     │                 │  ├─ messages
+│     │                 │  │  ├─ LogInMessage.class
+│     │                 │  │  └─ Message.class
+│     │                 │  ├─ ui
+│     │                 │  │  ├─ LoginWindow$1.class
+│     │                 │  │  └─ LoginWindow.class
+│     │                 │  └─ user
+│     │                 │     ├─ InRoomStatus.class
+│     │                 │     ├─ NotInRoomStatus.class
+│     │                 │     ├─ NotLoggedInStatus.class
+│     │                 │     ├─ ServerConnection.class
+│     │                 │     ├─ User.class
+│     │                 │     ├─ UserCore.class
+│     │                 │     └─ UserStatus.class
+│     │                 └─ server
+│     │                    ├─ APP.class
+│     │                    ├─ authentication
+│     │                    │  ├─ User.class
+│     │                    │  ├─ UserHandler.class
+│     │                    │  └─ UserManager.class
+│     │                    ├─ ChatServer.class
+│     │                    ├─ entrance
+│     │                    │  ├─ EndOfTransmission.class
+│     │                    │  └─ ServerEntrance.class
+│     │                    ├─ message
+│     │                    │  ├─ LogInMessage.class
+│     │                    │  ├─ Message.class
+│     │                    │  ├─ MessageSource.class
+│     │                    │  ├─ MessageType.class
+│     │                    │  ├─ SystemMessage$1.class
+│     │                    │  └─ SystemMessage.class
+│     │                    ├─ room
+│     │                    │  ├─ Room.class
+│     │                    │  └─ RoomManager.class
+│     │                    └─ ui
+│     │                       ├─ LogOutputWindow$1.class
+│     │                       └─ LogOutputWindow.class
+│     └─ Client
+│        └─ main
+│           └─ java
+│              └─ com
+│                 └─ bigcousin
+│                    └─ chatroom
+│                       └─ client
+│                          ├─ ClientAPP.class
+│                          ├─ messages
+│                          │  ├─ LogInMessage.class
+│                          │  └─ Message.class
+│                          ├─ ui
+│                          │  ├─ LoginWindow$1.class
+│                          │  └─ LoginWindow.class
+│                          └─ user
+│                             ├─ InRoomStatus.class
+│                             ├─ NotInRoomStatus.class
+│                             ├─ NotLoggedInStatus.class
+│                             ├─ ServerConnection.class
+│                             ├─ User.class
+│                             ├─ UserCore.class
+│                             └─ UserStatus.class
 ├─ README.md
+├─ Server
+│  └─ .idea
+│     └─ workspace.xml
 └─ src
    └─ main
       └─ java
          └─ com
             └─ bigcousin
                └─ chatroom
-                  └─ sever
+                  ├─ client
+                  │  ├─ ClientAPP.java
+                  │  └─ ui
+                  │     └─ LoginWindow.java
+                  ├─ data
+                  │  ├─ messages
+                  │  ├─ rooms
+                  │  └─ user
+                  │     ├─ InRoomStatus.java
+                  │     ├─ NotInRoomStatus.java
+                  │     ├─ NotLoggedInStatus.java
+                  │     ├─ User.java
+                  │     ├─ UserCore.java
+                  │     └─ UserStatus.java
+                  └─ server
                      ├─ APP.java
                      ├─ authentication
-                     │  ├─ User.java
                      │  ├─ UserHandler.java
                      │  └─ UserManager.java
                      ├─ ChatServer.java
                      ├─ entrance
+                     │  ├─ EndOfTransmission.java
                      │  └─ ServerEntrance.java
                      ├─ message
+                     │  ├─ LogInMessage.java
                      │  ├─ Message.java
                      │  ├─ MessageSource.java
                      │  ├─ MessageType.java
