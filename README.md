@@ -66,7 +66,7 @@ BC-chat_beta
 │                    ├─ ui
 │                    │  ├─ LoginWindow$1.class
 │                    │  └─ LoginWindow.class
-│                    └─ user
+│                    └─ userInfo
 │                       ├─ InRoomStatus.class
 │                       ├─ NotInRoomStatus.class
 │                       ├─ NotLoggedInStatus.class
@@ -103,7 +103,7 @@ BC-chat_beta
 │     │                 │  ├─ ui
 │     │                 │  │  ├─ LoginWindow$1.class
 │     │                 │  │  └─ LoginWindow.class
-│     │                 │  └─ user
+│     │                 │  └─ userInfo
 │     │                 │     ├─ InRoomStatus.class
 │     │                 │     ├─ NotInRoomStatus.class
 │     │                 │     ├─ NotLoggedInStatus.class
@@ -148,7 +148,7 @@ BC-chat_beta
 │                          ├─ ui
 │                          │  ├─ LoginWindow$1.class
 │                          │  └─ LoginWindow.class
-│                          └─ user
+│                          └─ userInfo
 │                             ├─ InRoomStatus.class
 │                             ├─ NotInRoomStatus.class
 │                             ├─ NotLoggedInStatus.class
@@ -173,7 +173,7 @@ BC-chat_beta
                   ├─ data
                   │  ├─ messages
                   │  ├─ rooms
-                  │  └─ user
+                  │  └─ userInfo
                   │     ├─ InRoomStatus.java
                   │     ├─ NotInRoomStatus.java
                   │     ├─ NotLoggedInStatus.java

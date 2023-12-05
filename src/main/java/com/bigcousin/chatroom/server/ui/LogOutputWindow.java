@@ -1,7 +1,8 @@
 package main.java.com.bigcousin.chatroom.server.ui;
 
-import main.java.com.bigcousin.chatroom.server.message.MessageSource;
-import main.java.com.bigcousin.chatroom.server.message.SystemMessage;
+import main.java.com.bigcousin.chatroom.data.messages.enums.MessageType;
+import main.java.com.bigcousin.chatroom.data.messages.enums.MessageSource;
+import main.java.com.bigcousin.chatroom.data.messages.SystemMessage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,8 +36,8 @@ public class LogOutputWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // 当用户在输入框中按下 Enter 键时，将输入的文本追加到文本区域中
-                SystemMessage message = new SystemMessage(
-                        main.java.com.bigcousin.chatroom.server.message.MessageType.INFO, inputField.getText(),
+                SystemMessage message = new SystemMessage(inputField.getText(),
+                        MessageType.INFO,
                         MessageSource.MANAGER);
                 appendSystemMessage(message);
                 // 清空输入框
@@ -65,8 +66,8 @@ public class LogOutputWindow extends JFrame {
         SwingUtilities.invokeLater(() -> {
             LogOutputWindow logOutputWindow = new LogOutputWindow();
             logOutputWindow.setVisible(true);
-            SystemMessage systemMessage = new SystemMessage(
-                    main.java.com.bigcousin.chatroom.server.message.MessageType.INFO, "日志测试", MessageSource.SYSTEM);
+            SystemMessage systemMessage = new SystemMessage("日志测试",
+                    MessageType.INFO,  MessageSource.SYSTEM);
             logOutputWindow.appendSystemMessage(systemMessage);
         });
     }

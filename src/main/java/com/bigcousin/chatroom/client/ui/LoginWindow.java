@@ -2,15 +2,16 @@ package main.java.com.bigcousin.chatroom.client.ui;
 
 import javax.swing.*;
 
-import main.java.com.bigcousin.chatroom.data.user.NotLoggedInStatus;
-import main.java.com.bigcousin.chatroom.server.message.LogInMessage;
+import main.java.com.bigcousin.chatroom.client.core.NotInRoomStatus;
+import main.java.com.bigcousin.chatroom.client.core.NotLoggedInStatus;
+import main.java.com.bigcousin.chatroom.client.core.UserStatus;
+import main.java.com.bigcousin.chatroom.data.messages.LogMessage;
+import main.java.com.bigcousin.chatroom.data.user.UserInfo;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -19,9 +20,11 @@ public class LoginWindow extends JFrame {
     private JTextField usernameField;
     private JPasswordField passwordField;
     private NotLoggedInStatus notLoggedInStatus;
+    private UserStatus userCore;
 
-    public LoginWindow(NotLoggedInStatus notLoggedInStatus) {
+    public LoginWindow(NotLoggedInStatus notLoggedInStatus,UserStatus userCore) {
         super("BCchat");
+        this.userCore=userCore;
         this.notLoggedInStatus = notLoggedInStatus;
         // 设置窗口标题
 
@@ -44,7 +47,9 @@ public class LoginWindow extends JFrame {
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                login();
+                UserInfo newUserInfo=login();
+                notLoggedInStatus.setUserInfo(newUserInfo);
+                dispose();
             }
         });
 
@@ -79,7 +84,7 @@ public class LoginWindow extends JFrame {
         loginButton.setFont(font);
 
         // 设置按钮背景色
-        loginButton.setBackground(new Color(70, 130, 180)); // 深蓝色
+        loginButton.setBackground(new Color(46, 139, 206)); // 深蓝色
         loginButton.setForeground(Color.WHITE); // 白色
 
         // 设置窗口背景色
@@ -94,7 +99,7 @@ public class LoginWindow extends JFrame {
         setVisible(true);
     }
 
-    private void login() {
+    private UserInfo login() {
         // 获取输入的账号和密码
         String acount = usernameField.getText();
         char[] passwordChars = passwordField.getPassword();
@@ -104,15 +109,13 @@ public class LoginWindow extends JFrame {
         // 此处只是简单地打印输入的账号和密码
         System.out.println("登录账号: " + acount);
         System.out.println("登录密码: " + password);
-        LogInMessage messages = new LogInMessage(acount, password);
-        
+        LogMessage messages = new LogMessage(acount, password);
+
         try {
             notLoggedInStatus.setSocket(new Socket(notLoggedInStatus.getServerAddress(), notLoggedInStatus.getPort()));
             OutputStream outputStream = notLoggedInStatus.getSocket().getOutputStream();
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-            
             objectOutputStream.writeObject(messages);
-
         } catch (UnknownHostException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -121,8 +124,19 @@ public class LoginWindow extends JFrame {
             e.printStackTrace();
         }
         // 在这里可以添加验证逻辑，与服务器建立连接并且等待服务器响应
+        UserInfo newUserInfo;
+        try {
+            InputStream inputStream = notLoggedInStatus.getSocket().getInputStream();
+            ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
+            newUserInfo = (UserInfo) objectInputStream.readObject();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
         // 清空密码框
         passwordField.setText("");
+        return newUserInfo;
     }
 }
