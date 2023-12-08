@@ -1,11 +1,11 @@
 package main.java.com.bigcousin.chatroom.server.core.business.service;
 
-import main.java.com.bigcousin.chatroom.transdata.messages.LogMessage;
-import main.java.com.bigcousin.chatroom.transdata.messages.enums.MessageSource;
-import main.java.com.bigcousin.chatroom.transdata.messages.enums.MessageType;
-import main.java.com.bigcousin.chatroom.transdata.messages.SystemMessage;
-import main.java.com.bigcousin.chatroom.transdata.user.UserInfo;
-import main.java.com.bigcousin.chatroom.server.app.ChatServer;
+import main.java.com.bigcousin.chatroom.data.messages.LogInMessage;
+import main.java.com.bigcousin.chatroom.data.messages.enums.MessageSource;
+import main.java.com.bigcousin.chatroom.data.messages.enums.MessageType;
+import main.java.com.bigcousin.chatroom.data.messages.SystemMessage;
+import main.java.com.bigcousin.chatroom.data.user.UserInfo;
+import main.java.com.bigcousin.chatroom.server.app.ChatServerAPP;
 import main.java.com.bigcousin.chatroom.server.ui.LogOutputWindow;
 
 import java.io.*;
@@ -14,34 +14,30 @@ import java.net.Socket;
 public class ServerEntrance implements Runnable {
     ServerSocket serverSocket;
     LogOutputWindow logOutputWindow;
-    ChatServer server;
+    ChatServerAPP server;
 
-    public ServerEntrance(ChatServer server, ServerSocket serverSocket, LogOutputWindow logOutputWindow) {
+    public ServerEntrance(ChatServerAPP server, ServerSocket serverSocket, LogOutputWindow logOutputWindow) {
         this.serverSocket = serverSocket;
         this.logOutputWindow = logOutputWindow;
         this.server=server;
     }
-
     @Override
     public void run() {
         try {
             while (true) {
                 Socket socket = serverSocket.accept();
                 if (socket != null) {
-
                     logOutputWindow.appendSystemMessage(new SystemMessage("客户端接入:" + socket.getInetAddress().getHostAddress(),
                             MessageType.INFO,
                             MessageSource.SYSTEM));
-
                 }
-
                 // 方案，客户端方面输入账号和密码再连接，然后建立套接字连接，连接成功后服务端自动从本地数据库匹配账号密码
                 InputStream inputStream = socket.getInputStream();
                 ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
-                LogMessage logMessage = (LogMessage)objectInputStream.readObject();
-                SystemMessage newMessage=new SystemMessage(logMessage.getAcount()+" Connected!",MessageType.INFO,MessageSource.USER);
+                LogInMessage logInMessage = (LogInMessage)objectInputStream.readObject();
+                SystemMessage newMessage=new SystemMessage(logInMessage.getAcount()+" Connected!",MessageType.INFO,MessageSource.USER);
                 logOutputWindow.appendSystemMessage(newMessage);
-                UserInfo newUserInfo =findUserByLogInMessage("D:/Datas/JavaProjects/BC chat/UserDatas.txt", logMessage);
+                UserInfo newUserInfo =findUserByLogInMessage("D:/Datas/JavaProjects/BC chat/UserDatas.txt", logInMessage);
                 if(newUserInfo !=null){
                     logOutputWindow.appendSystemMessage(new SystemMessage("用户类生成:" + newUserInfo.getNickname(),
                             MessageType.INFO,
@@ -66,7 +62,7 @@ public class ServerEntrance implements Runnable {
         }
     }
 
-    private static UserInfo findUserByLogInMessage(String filePath, LogMessage logMessage) {
+    private static UserInfo findUserByLogInMessage(String filePath, LogInMessage logInMessage) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -78,7 +74,7 @@ public class ServerEntrance implements Runnable {
                     String password = userInfo[3];
 
                     // 检查账号和密码是否匹配
-                    if (account.equals(logMessage.getAcount()) && password.equals(logMessage.getPassword())) {
+                    if (account.equals(logInMessage.getAcount()) && password.equals(logInMessage.getPassword())) {
                         return new UserInfo(nickname, account, password, role);
                     }
                 }

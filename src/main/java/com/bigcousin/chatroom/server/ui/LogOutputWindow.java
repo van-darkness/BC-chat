@@ -1,8 +1,8 @@
 package main.java.com.bigcousin.chatroom.server.ui;
 
-import main.java.com.bigcousin.chatroom.transdata.messages.enums.MessageType;
-import main.java.com.bigcousin.chatroom.transdata.messages.enums.MessageSource;
-import main.java.com.bigcousin.chatroom.transdata.messages.SystemMessage;
+import main.java.com.bigcousin.chatroom.data.messages.enums.MessageType;
+import main.java.com.bigcousin.chatroom.data.messages.enums.MessageSource;
+import main.java.com.bigcousin.chatroom.data.messages.SystemMessage;
 
 import javax.swing.*;
 import java.awt.*;
