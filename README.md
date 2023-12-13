@@ -112,7 +112,7 @@ BC-chat_beta
 │     │                 │     ├─ UserCore.class
 │     │                 │     └─ UserStatus.class
 │     │                 └─ server
-│     │                    ├─ APP.class
+│     │                    ├─ main.java.com.bigcousin.chatroom.client.app.APP.class
 │     │                    ├─ authentication
 │     │                    │  ├─ User.class
 │     │                    │  ├─ UserHandler.class
@@ -181,7 +181,7 @@ BC-chat_beta
                   │     ├─ UserCore.java
                   │     └─ UserStatus.java
                   └─ server
-                     ├─ APP.java
+                     ├─ main.java.com.bigcousin.chatroom.client.app.APP.java
                      ├─ authentication
                      │  ├─ UserHandler.java
                      │  └─ UserManager.java
@@ -320,7 +320,7 @@ BC-chat_beta
 │     │                 │  └─ user
 │     │                 │     └─ UserInfo.class
 │     │                 └─ server
-│     │                    ├─ APP.class
+│     │                    ├─ main.java.com.bigcousin.chatroom.client.app.APP.class
 │     │                    ├─ authentication
 │     │                    │  └─ User.class
 │     │                    ├─ ChatServer.class
@@ -371,7 +371,7 @@ BC-chat_beta
                   │  └─ util
                   ├─ server
                   │  ├─ app
-                  │  │  ├─ APP.java
+                  │  │  ├─ main.java.com.bigcousin.chatroom.client.app.APP.java
                   │  │  └─ ChatServer.java
                   │  ├─ core
                   │  │  ├─ business
@@ -496,7 +496,7 @@ BC-chat_beta
 │     │                 │     └─ ClientAPP.class
 │     │                 ├─ server
 │     │                 │  ├─ app
-│     │                 │  │  ├─ APP.class
+│     │                 │  │  ├─ main.java.com.bigcousin.chatroom.client.app.APP.class
 │     │                 │  │  └─ ChatServer.class
 │     │                 │  ├─ core
 │     │                 │  │  └─ business
@@ -562,7 +562,7 @@ BC-chat_beta
                   │  └─ util
                   ├─ server
                   │  ├─ app
-                  │  │  ├─ APP.java
+                  │  │  ├─ main.java.com.bigcousin.chatroom.client.app.APP.java
                   │  │  └─ ChatServer.java
                   │  ├─ core
                   │  │  ├─ business
@@ -687,7 +687,7 @@ BC-chat_beta
 │     │                 │     └─ ClientAPP.class
 │     │                 ├─ server
 │     │                 │  ├─ app
-│     │                 │  │  ├─ APP.class
+│     │                 │  │  ├─ main.java.com.bigcousin.chatroom.client.app.APP.class
 │     │                 │  │  └─ ChatServer.class
 │     │                 │  ├─ core
 │     │                 │  │  └─ business
@@ -753,7 +753,7 @@ BC-chat_beta
                   │  └─ util
                   ├─ server
                   │  ├─ app
-                  │  │  ├─ APP.java
+                  │  │  ├─ main.java.com.bigcousin.chatroom.client.app.APP.java
                   │  │  └─ ChatServer.java
                   │  ├─ core
                   │  │  ├─ business
@@ -878,7 +878,7 @@ BC-chat_beta
 │     │                 │     └─ ClientAPP.class
 │     │                 ├─ server
 │     │                 │  ├─ app
-│     │                 │  │  ├─ APP.class
+│     │                 │  │  ├─ main.java.com.bigcousin.chatroom.client.app.APP.class
 │     │                 │  │  └─ ChatServer.class
 │     │                 │  ├─ core
 │     │                 │  │  └─ business
@@ -944,7 +944,7 @@ BC-chat_beta
                   │  └─ util
                   ├─ server
                   │  ├─ app
-                  │  │  ├─ APP.java
+                  │  │  ├─ main.java.com.bigcousin.chatroom.client.app.APP.java
                   │  │  └─ ChatServer.java
                   │  ├─ core
                   │  │  ├─ business
@@ -1069,7 +1069,7 @@ BC-chat_beta
 │     │                 │     └─ ClientAPP.class
 │     │                 ├─ server
 │     │                 │  ├─ app
-│     │                 │  │  ├─ APP.class
+│     │                 │  │  ├─ main.java.com.bigcousin.chatroom.client.app.APP.class
 │     │                 │  │  └─ ChatServer.class
 │     │                 │  ├─ core
 │     │                 │  │  └─ business
@@ -1135,7 +1135,7 @@ BC-chat_beta
                   │  └─ util
                   ├─ server
                   │  ├─ app
-                  │  │  ├─ APP.java
+                  │  │  ├─ main.java.com.bigcousin.chatroom.client.app.APP.java
                   │  │  └─ ChatServer.java
                   │  ├─ core
                   │  │  ├─ business
