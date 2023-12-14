@@ -1,4 +1,6 @@
-package main.java.com.bigcousin.chatroom.client;
+package main.java.com.bigcousin.chatroom.client.ui;
+
+import main.java.com.bigcousin.chatroom.client.core.ChatClient;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,7 +53,7 @@ public class ChatClientUI {
             public void actionPerformed(ActionEvent e) {
                 String nickname = nicknameField.getText().trim();
                 if (!nickname.isEmpty()) {
-                    chatClient = new ChatClient(nickname, chatArea);
+                    //chatClient = new ChatClient(nickname, chatArea);
                     chatClient.connect(serverAddress, port);
                     messageField.setEditable(true);
                     nicknameField.setEditable(false);
@@ -66,8 +68,8 @@ public class ChatClientUI {
             public void actionPerformed(ActionEvent e) {
                 String message = messageField.getText().trim();
                 if (!message.isEmpty()) {
-                    chatClient.sendMessage(message);
-                    messageField.setText("");
+//                    chatClient.sendMessage(message);
+//                    messageField.setText("");
                 }
             }
         });

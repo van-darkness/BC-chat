@@ -1,14 +1,10 @@
-package server.app;
+package main.java.com.bigcousin.chatroom.server.app;
 
-import server.service.ChatServer;
+
+import main.java.com.bigcousin.chatroom.server.service.ChatServer;
 
 public class ServerAPP {
     public static void main(String[] args) {
-        try {
-            ChatServer chatServer = new ChatServer();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        ChatServer chatServer = new ChatServer();
     }
 }
