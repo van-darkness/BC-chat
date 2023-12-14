@@ -4,6 +4,8 @@ import main.java.com.bigcousin.chatroom.common.info.room.RoomInfo;
 import main.java.com.bigcousin.chatroom.common.info.room.RoomInfoList;
 import main.java.com.bigcousin.chatroom.common.info.user.UserInfo;
 import main.java.com.bigcousin.chatroom.common.message.*;
+import main.java.com.bigcousin.chatroom.server.exception.NullMessageException;
+import main.java.com.bigcousin.chatroom.server.exception.RoomCreatException;
 import main.java.com.bigcousin.chatroom.server.service.room.Room;
 
 import java.io.*;
@@ -36,11 +38,19 @@ public class ChatServer {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        creatRoom("BigCousin'Chatroom");
+        try {
+            creatRoom("BigCousin'Chatroom");
+        } catch (RoomCreatException e) {
+            throw new RuntimeException(e);
+        }
         ServerEntrance serverEntrance=new ServerEntrance();
         serverEntrance.start();
     }
-    private void creatRoom(String roomName){
+    private void creatRoom(String roomName) throws RoomCreatException {
+        for(int i=0;i<rooms.size();i++){
+            if(rooms.get(i).getRoomInfo().getName().equals(roomName));
+            throw new RoomCreatException(roomName);
+        }
         Room room=new Room(new RoomInfo(roomName,10,rooms.size()));
         rooms.add(room);
         roomInfoList.add(room.getRoomInfo());
@@ -56,9 +66,28 @@ public class ChatServer {
             clientHandlers.remove(handler);
         }
     }
-    private void borderCast(ChatMessage chatMessage){
-
+    public void removeClientHandler(ClientHandler handler,RoomInfo roomInfo){
+        //同时将用户从房间和大厅中移除
     }
+    public void addUserToRoom(UserInfo userInfo,int i){
+        //i事要加入的房间在房间列表中的序号
+        rooms.get(i).addUser(userInfo);
+    }
+    public void addUserToRoom(UserInfo userInfo,String roomName){
+        for(int i=0;i<rooms.size();i++){
+            if(roomName==rooms.get(i).getRoomInfo().getName()){
+                rooms.get(i).addUser(userInfo);
+            }
+        }
+    }
+    public void broadcastMessage(Message message) {
+        synchronized (clientHandlers) {
+            for (ClientHandler handler : clientHandlers) {
+                handler.sendMessage(message);
+            }
+        }
+    }
+
     private void borderCast(SystemMessage systemMessage){}
 
     class ServerEntrance extends Thread{
@@ -131,30 +160,62 @@ public class ChatServer {
                 while (true) {
                     Object message = objectInputStream.readObject();
                     // ... 处理接收到的消息 ...
-
+                    handleMessage(message);
                 }
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
+            } catch (NullMessageException e) {
+                throw new RuntimeException(e);
             } finally {
                 closeConnection();
             }
         }
-        private void handleMessage(Object message){
-            if(message instanceof ChatMessage){
-                ChatMessage chatMessage=(ChatMessage) message;
-                borderCast(chatMessage);
-            } else if (message instanceof LogoutMessage) {
+        private void handleMessage(Object message) throws NullMessageException {
+            if(message!=null){
+                if(message instanceof ChatMessage){
+                    ChatMessage chatMessage=(ChatMessage) message;
+                    broadcastMessage((Message) message);
+                } else if (message instanceof LogoutMessage) {
+                    // 处理用户登出
+                    LogoutMessage logoutMessage = (LogoutMessage) message;
+                    // ... 处理登出逻辑 ...
+                    closeConnection();
+                    removeClientHandler(this);
+                } else if (message instanceof LoginMessage) {
+                    //默认已登录，暂时不处理
+                } else if (message instanceof RoomSelectionMessage) {
+                    RoomSelectionMessage roomSelectionMessage=(RoomSelectionMessage) message;
+                    String roomname=roomSelectionMessage.getRoomName();
+                    for(int i=0;i<rooms.size();i++){
+                        if(roomname.equals(rooms.get(i).getRoomInfo().getName())){
+                            addUserToRoom(userInfo,i);
+                            return;
+                        }
+                    }
+                    try {
+                        creatRoom(roomname);
+                        addUserToRoom(roomSelectionMessage.getUserInfo(),roomname);
+                    } catch (RoomCreatException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }else{
+                throw new NullMessageException(userInfo);
+            }
 
-            } else if (message instanceof LoginMessage) {
-                //默认已登录，暂时不处理
-            } else if (message instanceof RoomSelectionMessage) {
-                RoomSelectionMessage roomSelectionMessage=(RoomSelectionMessage) message;
-
+        }
+        public void sendMessage(Message message) {
+            if (message == null) {
+                return;
+            }
+            try {
+                objectOutputStream.writeObject(message);
+                objectOutputStream.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
-        public void sendMessage(){
 
-        }
 
         private void closeConnection() {
             try {
@@ -169,6 +230,6 @@ public class ChatServer {
             return userInfo;
         }
 
-        // 其他必要的方法，比如 broadcastMessage
+        // 其他必要的方法
     }
 }
