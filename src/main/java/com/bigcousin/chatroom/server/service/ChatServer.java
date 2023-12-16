@@ -4,13 +4,16 @@ import main.java.com.bigcousin.chatroom.common.info.room.RoomInfo;
 import main.java.com.bigcousin.chatroom.common.info.room.RoomInfoList;
 import main.java.com.bigcousin.chatroom.common.info.user.UserInfo;
 import main.java.com.bigcousin.chatroom.common.message.*;
+import main.java.com.bigcousin.chatroom.common.request.Request;
 import main.java.com.bigcousin.chatroom.server.exception.NullMessageException;
 import main.java.com.bigcousin.chatroom.server.exception.RoomCreatException;
-import main.java.com.bigcousin.chatroom.server.service.room.Room;
 
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
+import java.util.*;
+
+import static main.java.com.bigcousin.chatroom.common.request.RequestType.GET_LIST_ROOM;
+import static main.java.com.bigcousin.chatroom.common.request.RequestType.GET_LIST_USER;
 
 public class ChatServer {
     private final int PORT = 12345;
@@ -54,6 +57,11 @@ public class ChatServer {
         Room room=new Room(new RoomInfo(roomName,10,rooms.size()));
         rooms.add(room);
         roomInfoList.add(room.getRoomInfo());
+        // 获取更新后的房间列表
+        List<RoomInfo> roomInfos = getRoomInfos();
+
+        // 广播新的房间列表
+        broadcastObject(roomInfos);
     }
     public void addClientHandler(ClientHandler handler) {
         synchronized (clientHandlers) {
@@ -71,12 +79,14 @@ public class ChatServer {
     }
     public void addUserToRoom(UserInfo userInfo,int i){
         //i事要加入的房间在房间列表中的序号
+        userInfo.setRoomInfo(rooms.get(i).getRoomInfo());
         rooms.get(i).addUser(userInfo);
     }
     public void addUserToRoom(UserInfo userInfo,String roomName){
         for(int i=0;i<rooms.size();i++){
             if(roomName==rooms.get(i).getRoomInfo().getName()){
                 rooms.get(i).addUser(userInfo);
+                userInfo.setRoomInfo(rooms.get(i).getRoomInfo());
             }
         }
     }
@@ -170,39 +180,109 @@ public class ChatServer {
                 closeConnection();
             }
         }
-        private void handleMessage(Object message) throws NullMessageException {
-            if(message!=null){
-                if(message instanceof ChatMessage){
-                    ChatMessage chatMessage=(ChatMessage) message;
-                    broadcastMessage((Message) message);
-                } else if (message instanceof LogoutMessage) {
+        // 方法用于发送房间信息列表
+        private void sendRoomList() {
+            try {
+                List<RoomInfo> roomInfos = ChatServer.this.getRoomInfos(); // 获取房间信息列表
+                objectOutputStream.writeObject(roomInfos); // 发送房间信息列表
+                objectOutputStream.flush();
+            } catch (IOException e) {
+                e.printStackTrace(); // 处理异常，例如记录日志
+            }
+        }
+        private void handleMessage(Object object) throws NullMessageException {
+            if(object!=null){
+                if(object instanceof ChatMessage){
+                    ChatMessage chatMessage=(ChatMessage) object;
+                    broadcastMessage((Message) object);
+                } else if (object instanceof LogoutMessage) {
+
                     // 处理用户登出
-                    LogoutMessage logoutMessage = (LogoutMessage) message;
+                    LogoutMessage logoutMessage = (LogoutMessage) object;
                     // ... 处理登出逻辑 ...
                     closeConnection();
                     removeClientHandler(this);
-                } else if (message instanceof LoginMessage) {
+                } else if (object instanceof LoginMessage) {
                     //默认已登录，暂时不处理
-                } else if (message instanceof RoomSelectionMessage) {
-                    RoomSelectionMessage roomSelectionMessage=(RoomSelectionMessage) message;
-                    String roomname=roomSelectionMessage.getRoomName();
-                    for(int i=0;i<rooms.size();i++){
-                        if(roomname.equals(rooms.get(i).getRoomInfo().getName())){
-                            addUserToRoom(userInfo,i);
-                            return;
-                        }
-                    }
-                    try {
-                        creatRoom(roomname);
-                        addUserToRoom(roomSelectionMessage.getUserInfo(),roomname);
-                    } catch (RoomCreatException e) {
-                        throw new RuntimeException(e);
+                } else if (object instanceof RoomSelectionMessage) {
+                    RoomSelectionMessage roomSelectionMessage=(RoomSelectionMessage) object;
+                    handleRoomSelectionMessage(roomSelectionMessage);
+                } else if (object instanceof Request) {
+                    Request request = (Request) object;
+                    switch (request.getRequestTypel()) {
+                        case GET_LIST_ROOM:
+                            sendRoomList();
+                            break;
+                        case GET_LIST_USER:
+                            sendUserList(userInfo);
+                            break;
+                        // 其他请求类型...
                     }
                 }
             }else{
                 throw new NullMessageException(userInfo);
             }
 
+        }
+        private void sendUserList(UserInfo user) {
+            try {
+                List<UserInfo> userList = getUsersInSameRoom(user); // 获取同一房间的用户信息列表
+                objectOutputStream.writeObject(userList); // 发送用户信息列表
+                objectOutputStream.flush();
+            } catch (IOException e) {
+                e.printStackTrace(); // 处理异常
+            }
+        }
+
+        // 获取与指定用户处于同一房间的所有用户的列表
+        private List<UserInfo> getUsersInSameRoom(UserInfo user) {
+            Room userRoom = findUserRoom(user);
+            return userRoom != null ? new ArrayList<>(userRoom.getUserInfos()) : new ArrayList<>();
+        }
+        private void handleRoomSelectionMessage(RoomSelectionMessage message){
+            if(!message.isSwitch()){
+                //初次加入房间
+                String roomname=message.getRoomName();
+                for(int i=0;i<rooms.size();i++){
+                    if(roomname.equals(rooms.get(i).getRoomInfo().getName())){
+                        addUserToRoom(userInfo,i);
+                        return;
+                    }
+                }
+                try {
+                    creatRoom(roomname);
+                    addUserToRoom(message.getUserInfo(),roomname);
+                } catch (RoomCreatException e) {
+                    throw new RuntimeException(e);
+                }
+            }else {
+                //切换房间
+                Room currentRoom=findUserRoom(userInfo);
+                if(currentRoom!=null){
+                    currentRoom.removeUser(userInfo);
+                }
+                String roomname=message.getRoomName();
+                for(int i=0;i<rooms.size();i++){
+                    if(roomname.equals(rooms.get(i).getRoomInfo().getName())){
+                        addUserToRoom(userInfo,i);
+                        return;
+                    }
+                }
+                try {
+                    creatRoom(roomname);
+                    addUserToRoom(message.getUserInfo(),roomname);
+                } catch (RoomCreatException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        private Room findUserRoom(UserInfo user) {
+            for (Room room : rooms) {
+                if (room.getUserInfos().contains(user)) {
+                    return room;
+                }
+            }
+            return null;
         }
         public void sendMessage(Message message) {
             if (message == null) {
@@ -215,8 +295,6 @@ public class ChatServer {
                 e.printStackTrace();
             }
         }
-
-
         private void closeConnection() {
             try {
                 if (objectInputStream != null) objectInputStream.close();
@@ -226,10 +304,29 @@ public class ChatServer {
                 e.printStackTrace();
             }
         }
-        public UserInfo getUserInfo() {
-            return userInfo;
+        public void sendObject(Object obj) {
+            try {
+                objectOutputStream.writeObject(obj);
+                objectOutputStream.flush();
+            } catch (IOException e) {
+                e.printStackTrace(); // 或记录日志
+            }
         }
-
         // 其他必要的方法
+    }
+    public void broadcastObject(Object obj) {
+        synchronized (clientHandlers) {
+            for (ClientHandler handler : clientHandlers) {
+                handler.sendObject(obj);
+            }
+        }
+    }
+    public List<RoomInfo> getRoomInfos() {
+        //使用固定的List类发送房间列表保证其封装性
+        List<RoomInfo> roomInfos = new ArrayList<>();
+        for (Room room : rooms) {
+            roomInfos.add(room.getRoomInfo());
+        }
+        return roomInfos;
     }
 }

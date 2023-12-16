@@ -27,4 +27,12 @@ public class UserInfo implements Serializable {
     public String getNickname() {
         return nickname;
     }
+
+    public RoomInfo getRoomInfo() {
+        return roomInfo;
+    }
+
+    public void setRoomInfo(RoomInfo roomInfo) {
+        this.roomInfo = roomInfo;
+    }
 }

@@ -2,47 +2,110 @@ package main.java.com.bigcousin.chatroom.client.core;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.Scanner;
-import javax.swing.JTextArea;
+import java.util.List;
 
+import main.java.com.bigcousin.chatroom.common.info.room.RoomInfo;
 import main.java.com.bigcousin.chatroom.common.info.user.UserInfo;
-import main.java.com.bigcousin.chatroom.common.message.ChatMessage;
-import main.java.com.bigcousin.chatroom.common.message.LoginMessage;
-import main.java.com.bigcousin.chatroom.common.message.Message;
-import main.java.com.bigcousin.chatroom.common.message.RoomSelectionMessage;
+import main.java.com.bigcousin.chatroom.common.message.*;
+import main.java.com.bigcousin.chatroom.common.request.Request;
+import main.java.com.bigcousin.chatroom.common.request.RequestType;
 
 // ... 导入语句 ...
 
 public class ChatClient {
+    private List<RoomInfo> roomInfos;
     private UserInfo userInfo;
     private ObjectOutputStream out;
     private ObjectInputStream in;
     private Socket socket;
+    private boolean isLogged;
+    private String serverAddress;
+    private int port;
 
-    public ChatClient(String nickname) {
+    public ChatClient(String nickname,String serverAddress, int port) {
+        isLogged=false;
+        this.serverAddress=serverAddress;
+        this.port=port;
         this.userInfo = new UserInfo(nickname);
     }
+    public ChatClient(String serverAddress, int port){
+        this.serverAddress=serverAddress;
+        this.port=port;
+        isLogged=false;
+    }
+    public void login(String nickName){
+        if(isLogged)return;
+        //从登录窗口获取昵称，
+        connect(serverAddress,port);
+        // 开始接收服务器消息的线程
+        startMessageReceiver();
+        // 发送登录消息
+        try {
+            out.writeObject(new LoginMessage(nickName));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
-    public void connect(String serverAddress, int port) {
+        isLogged=true;
+    }
+    public void logout() {
+        if (!isLogged) {
+            return; // 用户未登录，无需登出
+        }
+        try {
+            // 如果需要发送登出消息给服务器
+            out.writeObject(new LogoutMessage(userInfo));
+            // 关闭输入输出流和套接字
+            closeConnection();
+            // 更新状态
+            isLogged = false;
+            userInfo = null; // 或根据需要重置 userInfo
+            System.out.println("Logged out successfully.");
+        } catch (IOException e) {
+            System.err.println("Error during logout: " + e.getMessage());
+        }
+    }
+    public void sendMessage(Message message) {
+        if(message==null){
+            System.out.println("消息为空");
+        }
+        else{
+            if(message instanceof ChatMessage){
+                try {
+                    out.writeObject(message);
+                    System.out.println("发送消息:"+((ChatMessage) message).getMessage());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+
+    }
+    private void connect(String serverAddress, int port) {
         try {
             socket = new Socket(serverAddress, port);
             out = new ObjectOutputStream(socket.getOutputStream());
             out.flush();  // 确保首先发送流的头部信息
             in = new ObjectInputStream(socket.getInputStream());
 
-
-            // 发送登录消息
-            out.writeObject(new LoginMessage(userInfo.getNickname()));
-
-            // 开始接收服务器消息的线程
-            startMessageReceiver();
-
-            // 处理用户输入
-            //handleUserInput();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    public void selectRoom(String name) {
+
+    }
+
+    public void requestRoomInfosFromServer() {
+        Request request=new Request(userInfo, RequestType.GET_LIST_ROOM);
+        try {
+            out.writeObject(request);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     class MessageReceiver extends Thread{
         @Override
         public void run() {
@@ -64,49 +127,50 @@ public class ChatClient {
         MessageReceiver messageReceiver=new MessageReceiver();
         messageReceiver.start();
     }
-
-    private void handleUserInput() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("You can start typing your messages:");
-
-        while (true) {
-            String message = scanner.nextLine();
-            ChatMessage chatMessage=new ChatMessage(message,userInfo);
-            //GUI界面中要修改退出机制
-            if ("quit".equalsIgnoreCase(chatMessage.getMessage())) {
-                break; // 或者执行其他退出逻辑
-            }
-            sendMessage(chatMessage);
-        }
-    }
-
     private void handleReceivedObject(Object obj) {
         if (obj instanceof ChatMessage) {
             ChatMessage msg = (ChatMessage) obj;
             System.out.println(msg.getMessage());
         } else if (obj instanceof UserInfo) {
-            userInfo=(UserInfo) obj;
-            //System.out.println("获取用户序号:"+userInfo.getId());
-        }
-        // 可以根据需要处理更多消息类型
-    }
-
-    public void sendMessage(Message message) {
-        if(message==null){
-            System.out.println("消息为空");
-        }
-        else{
-            if(message instanceof ChatMessage){
-                try {
-                    out.writeObject(message);
-                    System.out.println("发送消息:"+((ChatMessage) message).getMessage());
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+            userInfo = (UserInfo) obj;
+            System.out.println("获取用户序号:" + userInfo.getId());
+        } else if (obj instanceof List) {
+            // 检查列表中的元素类型
+            List<?> list = (List<?>) obj;
+            if (!list.isEmpty() && list.get(0) instanceof RoomInfo) {
+                // 安全地处理作为 RoomInfo 的列表
+                handleRoomInfoList((List<RoomInfo>) list);
             }
         }
-
+        // 可以添加后续的处理逻辑
+    }
+    private void handleRoomInfoList(List<RoomInfo> roomInfoList) {
+        roomInfos=roomInfoList;
+        for (RoomInfo roomInfo : roomInfoList) {
+            // 打印房间信息，或进行其他处理
+            System.out.println("Room: " + roomInfo.getName());
+        }
+    }
+    private void closeConnection() throws IOException {
+        if (in != null) {
+            in.close();
+            in = null;
+        }
+        if (out != null) {
+            out.close();
+            out = null;
+        }
+        if (socket != null && !socket.isClosed()) {
+            socket.close();
+            socket = null;
+        }
     }
 
-    // ... 其他方法 ...
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public List<RoomInfo> getRoomInfos() {
+        return roomInfos;
+    }
 }
