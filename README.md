@@ -41,10 +41,13 @@ npm start
 详见 开发日志.md
 ## 项目结构
 
-
 ```
 BC-chat_beta
 ├─ .idea
+│  ├─ artifacts
+│  │  ├─ Clent.xml
+│  │  ├─ ClientTest.xml
+│  │  └─ Server.xml
 │  ├─ misc.xml
 │  ├─ modules.xml
 │  ├─ uiDesigner.xml
@@ -52,19 +55,64 @@ BC-chat_beta
 │  └─ workspace.xml
 ├─ .vscode
 │  └─ settings.json
-├─ asset
-│  └─ icon
-│     └─ image.jpg
 ├─ BC-chat_beta.iml
+├─ BC-chat_beta.jar
 ├─ bin
-│  └─ main
-│     └─ java
-│        └─ com
-│           └─ bigcousin
-│              └─ chatroom
-│                 └─ server
-│                    └─ ui
-│                       └─ UserListWindows.form
+│  ├─ main
+│  │  └─ java
+│  │     └─ com
+│  │        └─ bigcousin
+│  │           └─ chatroom
+│  │              ├─ client
+│  │              │  ├─ app
+│  │              │  │  ├─ ClientAPP.class
+│  │              │  │  └─ Test.class
+│  │              │  ├─ controller
+│  │              │  │  └─ MainController.class
+│  │              │  ├─ core
+│  │              │  │  ├─ ChatClient$ObjectReceiver.class
+│  │              │  │  └─ ChatClient.class
+│  │              │  └─ ui
+│  │              │     ├─ ChatRoomWindow.class
+│  │              │     ├─ LoginWindow$1.class
+│  │              │     ├─ LoginWindow$2.class
+│  │              │     ├─ LoginWindow.class
+│  │              │     ├─ RoomSelectionWindow$1.class
+│  │              │     ├─ RoomSelectionWindow$2.class
+│  │              │     └─ RoomSelectionWindow.class
+│  │              ├─ common
+│  │              │  ├─ info
+│  │              │  │  ├─ room
+│  │              │  │  │  └─ RoomInfo.class
+│  │              │  │  └─ user
+│  │              │  │     ├─ UserInfo.class
+│  │              │  │     └─ UserInfoList.class
+│  │              │  ├─ message
+│  │              │  │  ├─ ChatMessage.class
+│  │              │  │  ├─ LoginMessage.class
+│  │              │  │  ├─ LogoutMessage.class
+│  │              │  │  ├─ Message.class
+│  │              │  │  ├─ MessageType.class
+│  │              │  │  ├─ RoomSelectionMessage.class
+│  │              │  │  └─ SystemMessage.class
+│  │              │  └─ request
+│  │              │     ├─ ClientRequest.class
+│  │              │     ├─ ClientRequestType.class
+│  │              │     └─ ServerRequest.class
+│  │              └─ server
+│  │                 ├─ app
+│  │                 │  └─ ServerAPP.class
+│  │                 ├─ exception
+│  │                 │  ├─ NullMessageException.class
+│  │                 │  └─ RoomCreatException.class
+│  │                 ├─ service
+│  │                 │  ├─ ChatServer$ClientHandler.class
+│  │                 │  ├─ ChatServer$ServerEntrance.class
+│  │                 │  ├─ ChatServer.class
+│  │                 │  └─ Room.class
+│  │                 └─ util
+│  └─ META-INF
+│     └─ MANIFEST.MF
 ├─ docs
 │  ├─ client端开发注意事项.md
 │  ├─ DemandAnalysis.md
@@ -77,13 +125,17 @@ BC-chat_beta
 │  ├─ image.png
 │  ├─ img.png
 │  ├─ img_1.png
+│  ├─ img_10.png
 │  ├─ img_2.png
 │  ├─ img_3.png
 │  ├─ img_4.png
 │  ├─ img_5.png
+│  ├─ img_6.png
+│  ├─ img_7.png
+│  ├─ img_8.png
+│  ├─ img_9.png
 │  ├─ server端开发事项.md
 │  └─ 开发日志.md
-├─ image.jpg
 ├─ lib
 │  ├─ Clock5.6.jar
 │  ├─ commons-codec-1.11.jar
@@ -98,50 +150,76 @@ BC-chat_beta
 │  ├─ jna-4.5.2.jar
 │  └─ jna-platform-4.5.2.jar
 ├─ out
+│  ├─ artifacts
+│  │  ├─ BC_chat_beta_jar
+│  │  ├─ BC_chat_Test
+│  │  │  └─ BC chat_Test.jar
+│  │  ├─ Clent
+│  │  ├─ Clent_jar
+│  │  │  └─ BC-chat_beta.jar
+│  │  └─ ClientTest
 │  └─ production
 │     ├─ BC-chat_beta
-│     │  └─ main
-│     │     └─ java
-│     │        └─ com
-│     │           └─ bigcousin
-│     │              └─ chatroom
-│     │                 ├─ client
-│     │                 │  ├─ app
-│     │                 │  │  └─ ChatApp.class
-│     │                 │  ├─ core
-│     │                 │  │  └─ ChatClient.class
-│     │                 │  └─ ui
-│     │                 │     ├─ ChatClientUI$1.class
-│     │                 │     ├─ ChatClientUI$2.class
-│     │                 │     ├─ ChatClientUI.class
-│     │                 │     ├─ ChatUI.class
-│     │                 │     ├─ LoginUI.class
-│     │                 │     ├─ RoomSelectionUI$1.class
-│     │                 │     └─ RoomSelectionUI.class
-│     │                 ├─ common
-│     │                 │  ├─ info
-│     │                 │  │  ├─ room
-│     │                 │  │  │  ├─ RoomInfo.class
-│     │                 │  │  │  └─ RoomInfoList.class
-│     │                 │  │  └─ user
-│     │                 │  │     ├─ UserInfo.class
-│     │                 │  │     └─ UserInfoList.class
-│     │                 │  └─ message
-│     │                 │     ├─ ChatMessage.class
-│     │                 │     ├─ LoginMessage.class
-│     │                 │     ├─ Message.class
-│     │                 │     ├─ MessageType.class
-│     │                 │     └─ RoomSelectionMessage.class
-│     │                 └─ server
-│     │                    ├─ app
-│     │                    │  └─ ServerAPP.class
-│     │                    └─ service
-│     │                       ├─ ChatServer$ServerEntrance.class
-│     │                       ├─ ChatServer.class
-│     │                       ├─ room
-│     │                       │  └─ Room.class
-│     │                       └─ user
-│     │                          └─ ClientHandler.class
+│     │  ├─ main
+│     │  │  ├─ java
+│     │  │  │  └─ com
+│     │  │  │     └─ bigcousin
+│     │  │  │        └─ chatroom
+│     │  │  │           ├─ client
+│     │  │  │           │  ├─ app
+│     │  │  │           │  │  ├─ ClientAPP.class
+│     │  │  │           │  │  └─ Test.class
+│     │  │  │           │  ├─ controller
+│     │  │  │           │  │  └─ MainController.class
+│     │  │  │           │  ├─ core
+│     │  │  │           │  │  ├─ ChatClient$ObjectReceiver.class
+│     │  │  │           │  │  └─ ChatClient.class
+│     │  │  │           │  └─ ui
+│     │  │  │           │     ├─ ChatRoomWindow.class
+│     │  │  │           │     ├─ LoginWindow$1.class
+│     │  │  │           │     ├─ LoginWindow$2.class
+│     │  │  │           │     ├─ LoginWindow.class
+│     │  │  │           │     ├─ RoomSelectionWindow$1.class
+│     │  │  │           │     ├─ RoomSelectionWindow$2.class
+│     │  │  │           │     └─ RoomSelectionWindow.class
+│     │  │  │           ├─ common
+│     │  │  │           │  ├─ info
+│     │  │  │           │  │  ├─ room
+│     │  │  │           │  │  │  └─ RoomInfo.class
+│     │  │  │           │  │  └─ user
+│     │  │  │           │  │     ├─ UserInfo.class
+│     │  │  │           │  │     └─ UserInfoList.class
+│     │  │  │           │  ├─ message
+│     │  │  │           │  │  ├─ ChatMessage.class
+│     │  │  │           │  │  ├─ LoginMessage.class
+│     │  │  │           │  │  ├─ LogoutMessage.class
+│     │  │  │           │  │  ├─ Message.class
+│     │  │  │           │  │  ├─ MessageType.class
+│     │  │  │           │  │  ├─ RoomSelectionMessage.class
+│     │  │  │           │  │  └─ SystemMessage.class
+│     │  │  │           │  └─ request
+│     │  │  │           │     ├─ ClientRequest.class
+│     │  │  │           │     ├─ ClientRequestType.class
+│     │  │  │           │     └─ ServerRequest.class
+│     │  │  │           └─ server
+│     │  │  │              ├─ app
+│     │  │  │              │  └─ ServerAPP.class
+│     │  │  │              ├─ exception
+│     │  │  │              │  ├─ NullMessageException.class
+│     │  │  │              │  └─ RoomCreatException.class
+│     │  │  │              ├─ service
+│     │  │  │              │  ├─ ChatServer$1.class
+│     │  │  │              │  ├─ ChatServer$ClientHandler.class
+│     │  │  │              │  ├─ ChatServer$ServerEntrance.class
+│     │  │  │              │  ├─ ChatServer.class
+│     │  │  │              │  └─ Room.class
+│     │  │  │              └─ util
+│     │  │  │                 └─ InfoProcessor.class
+│     │  │  └─ resources
+│     │  │     └─ images
+│     │  │        └─ image.jpg
+│     │  └─ META-INF
+│     │     └─ MANIFEST.MF
 │     └─ Client
 │        └─ main
 │           └─ java
@@ -165,44 +243,59 @@ BC-chat_beta
 │                             ├─ UserCore.class
 │                             └─ UserStatus.class
 ├─ README.md
-└─ src
-   └─ main
-      └─ java
-         └─ com
-            └─ bigcousin
-               └─ chatroom
-                  ├─ client
-                  │  ├─ app
-                  │  │  └─ ChatApp.java
-                  │  ├─ core
-                  │  │  └─ ChatClient.java
-                  │  └─ ui
-                  │     ├─ ChatClientUI.java
-                  │     ├─ ChatUI.java
-                  │     ├─ LoginUI.java
-                  │     └─ RoomSelectionUI.java
-                  ├─ common
-                  │  ├─ info
-                  │  │  ├─ room
-                  │  │  │  ├─ RoomInfo.java
-                  │  │  │  └─ RoomInfoList.java
-                  │  │  └─ user
-                  │  │     ├─ UserInfo.java
-                  │  │     └─ UserInfoList.java
-                  │  └─ message
-                  │     ├─ ChatMessage.java
-                  │     ├─ LoginMessage.java
-                  │     ├─ Message.java
-                  │     ├─ MessageType.java
-                  │     └─ RoomSelectionMessage.java
-                  └─ server
-                     ├─ app
-                     │  └─ ServerAPP.java
-                     └─ service
-                        ├─ ChatServer.java
-                        ├─ room
-                        │  └─ Room.java
-                        └─ user
-                           └─ ClientHandler.java
+├─ src
+│  ├─ main
+│  │  ├─ java
+│  │  │  └─ com
+│  │  │     └─ bigcousin
+│  │  │        └─ chatroom
+│  │  │           ├─ client
+│  │  │           │  ├─ app
+│  │  │           │  │  ├─ ClientAPP.java
+│  │  │           │  │  └─ Test.java
+│  │  │           │  ├─ controller
+│  │  │           │  │  └─ MainController.java
+│  │  │           │  ├─ core
+│  │  │           │  │  └─ ChatClient.java
+│  │  │           │  └─ ui
+│  │  │           │     ├─ ChatRoomWindow.java
+│  │  │           │     ├─ LoginWindow.java
+│  │  │           │     └─ RoomSelectionWindow.java
+│  │  │           ├─ common
+│  │  │           │  ├─ info
+│  │  │           │  │  ├─ room
+│  │  │           │  │  │  └─ RoomInfo.java
+│  │  │           │  │  └─ user
+│  │  │           │  │     ├─ UserInfo.java
+│  │  │           │  │     └─ UserInfoList.java
+│  │  │           │  ├─ message
+│  │  │           │  │  ├─ ChatMessage.java
+│  │  │           │  │  ├─ LoginMessage.java
+│  │  │           │  │  ├─ LogoutMessage.java
+│  │  │           │  │  ├─ Message.java
+│  │  │           │  │  ├─ MessageType.java
+│  │  │           │  │  ├─ RoomSelectionMessage.java
+│  │  │           │  │  └─ SystemMessage.java
+│  │  │           │  └─ request
+│  │  │           │     ├─ ClientRequest.java
+│  │  │           │     ├─ ClientRequestType.java
+│  │  │           │     └─ ServerRequest.java
+│  │  │           └─ server
+│  │  │              ├─ app
+│  │  │              │  └─ ServerAPP.java
+│  │  │              ├─ exception
+│  │  │              │  ├─ NullMessageException.java
+│  │  │              │  └─ RoomCreatException.java
+│  │  │              ├─ service
+│  │  │              │  ├─ ChatServer.java
+│  │  │              │  └─ Room.java
+│  │  │              └─ util
+│  │  │                 └─ InfoProcessor.java
+│  │  └─ resources
+│  │     └─ images
+│  │        └─ image.jpg
+│  └─ META-INF
+│     └─ MANIFEST.MF
+└─ structure101-settings.java.hsw
 
 ```
