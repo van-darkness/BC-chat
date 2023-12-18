@@ -14,53 +14,7 @@
     <option name="rewriteBookmarkType" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c8a9b1e-9e19-4dd3-b78a-828990978310" name="更改" comment="实现客户端登陆界面">
-      <change afterPath="$PROJECT_DIR$/docs/img_10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/request/ServerRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/util/InfoProcessor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/structure101-settings.java.hsw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/BC_chat_beta_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BC-chat_beta.jar" beforeDir="false" afterPath="$PROJECT_DIR$/BC-chat_beta.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/asset/icon/image.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/app/ClientAPP.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/app/ClientAPP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/controller/MainController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/core/ChatClient$MessageReceiver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/core/ChatClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/core/ChatClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/ui/LoginWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/ui/LoginWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/ui/RoomSelectionWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/ui/RoomSelectionWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/common/info/room/RoomInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/common/info/room/RoomInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/common/info/room/RoomInfoList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/common/info/user/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/common/info/user/UserInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/common/message/ChatMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/common/message/ChatMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/common/request/Request.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/common/request/RequestType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/server/service/ChatServer$ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/server/service/ChatServer$ClientHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/server/service/ChatServer$ServerEntrance.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/server/service/ChatServer$ServerEntrance.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/server/service/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/server/service/ChatServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/server/service/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/server/service/Room.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/开发日志.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/开发日志.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/app/ClientAPP.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/app/ClientAPP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/core/ChatClient$MessageReceiver.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/core/ChatClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/core/ChatClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/info/room/RoomInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/info/room/RoomInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/info/room/RoomInfoList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/info/user/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/info/user/UserInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/message/ChatMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/message/ChatMessage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/app/ClientAPP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/app/ClientAPP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/app/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/app/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/core/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/core/ChatClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/info/room/RoomInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/info/room/RoomInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/info/room/RoomInfoList.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/info/user/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/info/user/UserInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/message/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/message/ChatMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/request/ClientRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/request/RequestType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/request/ClientRequestType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/service/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/service/ChatServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/service/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/service/Room.java" afterDir="false" />
-    </list>
+    <list default="true" id="3c8a9b1e-9e19-4dd3-b78a-828990978310" name="更改" comment="修改登录信息传输BUG，完善项目业务逻辑" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -254,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702689767807</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="修改登录信息传输BUG，完善项目业务逻辑">
+      <option name="closed" value="true" />
+      <created>1702876313848</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1702876313848</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -276,7 +238,8 @@
     <MESSAGE value="实现服务端基本逻辑" />
     <MESSAGE value="提交.class" />
     <MESSAGE value="实现客户端登陆界面" />
-    <option name="LAST_COMMIT_MESSAGE" value="实现客户端登陆界面" />
+    <MESSAGE value="修改登录信息传输BUG，完善项目业务逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改登录信息传输BUG，完善项目业务逻辑" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
