@@ -4,15 +4,22 @@ import java.io.*;
 import java.net.Socket;
 import java.util.List;
 
+import main.java.com.bigcousin.chatroom.client.exception.ChatRoomWindowNotInitializedException;
+import main.java.com.bigcousin.chatroom.client.ui.ChatRoomWindow;
+import main.java.com.bigcousin.chatroom.client.ui.RoomSelectionWindow;
 import main.java.com.bigcousin.chatroom.common.info.room.RoomInfo;
 import main.java.com.bigcousin.chatroom.common.info.user.UserInfo;
 import main.java.com.bigcousin.chatroom.common.message.*;
 import main.java.com.bigcousin.chatroom.common.request.ClientRequest;
 import main.java.com.bigcousin.chatroom.common.request.ClientRequestType;
 
+import javax.swing.*;
+
 // ... 导入语句 ...
 
 public class ChatClient {
+    private RoomSelectionWindow roomSelectionWindow;
+    private ChatRoomWindow chatRoomWindow;
     private List<RoomInfo> roomInfos;
     private RoomInfo roomInfo;
     private UserInfo userInfo;
@@ -56,7 +63,7 @@ public class ChatClient {
             throw new RuntimeException(e);
         }
     }
-    public void selectRoom(String roomName) {
+    public void sendRoomSelection(String roomName) {
         // 创建房间选择消息
         RoomSelectionMessage roomSelectionMessage = new RoomSelectionMessage(roomName, userInfo);
         System.out.println("准备发送进入房间的请求");
@@ -159,7 +166,11 @@ public class ChatClient {
         if (obj==null)return;
         System.out.println("从服务器获取数据");
         if (obj instanceof ChatMessage) {
-            handleChatMessage((ChatMessage) obj);
+            try {
+                handleChatMessage((ChatMessage) obj);
+            } catch (ChatRoomWindowNotInitializedException e) {
+                throw new RuntimeException(e);
+            }
         } else if (obj instanceof UserInfo) {
             userInfo = (UserInfo) obj;
             System.out.println("获取用户序号:" + userInfo.getId());
@@ -174,20 +185,40 @@ public class ChatClient {
         } else if (obj instanceof RoomInfo) {
             System.out.println("获取房间数据");
             roomInfo=(RoomInfo) obj;
-            userInfo.setRoomInfo(roomInfo);
-            System.out.println("已进入房间："+userInfo.getRoomInfo().getName());
+
             //获取所进入房价信息
         }
         // 可以添加后续的处理逻辑
     }
-    private void handleChatMessage(ChatMessage chatMessage){
+    private void handleRoomInfo(RoomInfo roomInfo) throws ChatRoomWindowNotInitializedException {
+        userInfo.setRoomInfo(roomInfo);
+        System.out.println("已进入房间："+userInfo.getRoomInfo().getName());
+        if(chatRoomWindow!=null){
+            
+        }else {
+            throw new ChatRoomWindowNotInitializedException("聊天窗口为空");
+        }
+    }
+    private void handleChatMessage(ChatMessage chatMessage) throws ChatRoomWindowNotInitializedException {
+        if (chatRoomWindow != null) {
+            chatRoomWindow.receiveChatMessage(chatMessage);
+
+        } else {
+            throw new ChatRoomWindowNotInitializedException("Chat Room Window is not initialized.");
+        }
         System.out.println(chatMessage.toString());
     }
+
     private void handleRoomInfoList(List<RoomInfo> roomInfoList) {
+        roomInfos=roomInfoList;
         // 在这里处理房间信息列表
         for (RoomInfo roomInfo : roomInfoList) {
             // 例如，打印房间信息或更新用户界面
             System.out.println("Room: " + roomInfo.getName());
+        }
+        //更新房间选择窗口的列表
+        if(roomSelectionWindow!=null){
+            roomSelectionWindow.setRoomInfos(roomInfos);
         }
     }
     private void closeConnection() throws IOException {
@@ -215,5 +246,13 @@ public class ChatClient {
 
     public RoomInfo getRoomInfo() {
         return roomInfo;
+    }
+    public void addWindow(JFrame window){
+        if(window instanceof RoomSelectionWindow){
+            this.roomSelectionWindow=(RoomSelectionWindow) window;
+
+        } else if (window instanceof ChatRoomWindow) {
+            this.chatRoomWindow=(ChatRoomWindow) window;
+        }
     }
 }

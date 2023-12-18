@@ -36,8 +36,7 @@ public class ChatServer {
             throw new RuntimeException(e);
         }
         try {
-            creatRoom("BigCousin'Chatroom1");
-            creatRoom("BigCousin'Chatroom2");
+                creatRoom("BigCousin'Chatroom");
         } catch (RoomCreatException e) {
             throw new RuntimeException(e);
         }

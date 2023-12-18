@@ -1,6 +1,5 @@
 package main.java.com.bigcousin.chatroom.client.app;
 
-import main.java.com.bigcousin.chatroom.client.controller.MainController;
 import main.java.com.bigcousin.chatroom.client.core.ChatClient;
 
 import java.util.Scanner;
@@ -12,7 +11,7 @@ public class Test {
         ChatClient chatClient = new ChatClient(serverAddress, 8888);
         System.out.println("hello,Cui");
         chatClient.login("Bigcousin");
-        chatClient.selectRoom("BigCousin'Chatroom1");
+        chatClient.sendRoomSelection("BigCousin'Chatroom1");
         //chatClient.getUserInfo();
     }
 }

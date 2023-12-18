@@ -29,11 +29,22 @@ public class MainController {
         roomSelectionWindow.setVisible(true);
     }
 
-    public void switchToChatRoomWindow(String name) {
 
-    }
     public void showChatRoomWindow(){
         chatRoomWindow = new ChatRoomWindow(this, chatClient);
+        roomSelectionWindow.setVisible(false);
+        chatRoomWindow.setVisible(true);
     }
 
+    public LoginWindow getLoginWindow() {
+        return loginWindow;
+    }
+
+    public ChatRoomWindow getChatRoomWindow() {
+        return chatRoomWindow;
+    }
+
+    public RoomSelectionWindow getRoomSelectionWindow() {
+        return roomSelectionWindow;
+    }
 }

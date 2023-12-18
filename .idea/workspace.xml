@@ -14,7 +14,43 @@
     <option name="rewriteBookmarkType" value="true" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3c8a9b1e-9e19-4dd3-b78a-828990978310" name="更改" comment="修改登录信息传输BUG，完善项目业务逻辑" />
+    <list default="true" id="3c8a9b1e-9e19-4dd3-b78a-828990978310" name="更改" comment="修改登录信息传输BUG，完善项目业务逻辑">
+      <change afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/server/util/InfoProcessor.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/server/util/TestOpre.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/Clock3.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/exception/ChatRoomWindowNotInitializedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/BubblePanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/RoomSelectWindow.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/RoomSelectWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/util/TestOpre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BC-chat_beta.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BC-chat_beta.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BC-chat_beta.jar" beforeDir="false" afterPath="$PROJECT_DIR$/BC-chat_beta.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/app/Test.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/app/Test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/core/ChatClient$ObjectReceiver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/core/ChatClient$ObjectReceiver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/core/ChatClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/core/ChatClient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/ChatRoomWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/ChatRoomWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/RoomSelectionWindow$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/RoomSelectionWindow$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/RoomSelectionWindow$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/RoomSelectionWindow$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/RoomSelectionWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/RoomSelectionWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/info/user/UserInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/info/user/UserInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/message/ChatMessage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/common/message/ChatMessage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/server/service/ChatServer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/server/service/ChatServer$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/server/service/ChatServer$ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/server/service/ChatServer$ClientHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/server/service/ChatServer$ServerEntrance.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/server/service/ChatServer$ServerEntrance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/server/service/ChatServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/server/service/ChatServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/server/util/InfoProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/server/util/InfoProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/app/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/app/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/core/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/core/ChatClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/ChatRoomWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/ChatRoomWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/RoomSelectionWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/RoomSelectionWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/info/user/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/info/user/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/message/ChatMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/common/message/ChatMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/service/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/service/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/util/InfoProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/util/InfoProcessor.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,8 +103,8 @@
     "create.test.in.the.same.root": "true",
     "git-widget-placeholder": "beta——develop",
     "jdk.selected.JAVA_MODULE": "openjdk-20",
-    "last_opened_file_path": "C:/Users/23805/Desktop/软件测试/Client",
-    "project.structure.last.edited": "工件",
+    "last_opened_file_path": "D:/code/Java codes/week14/BC-chat_beta/lib/Clock3.0.jar",
+    "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -77,6 +113,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\code\Java codes\week14\BC-chat_beta\lib" />
       <recent name="D:\code\Java codes\week14\BC-chat_beta\src\main\java\com\bigcousin\chatroom" />
       <recent name="D:\code\github\BC chat\beta\BC-chat_beta\lib" />
       <recent name="D:\code\github\BC chat\beta\BC-chat_beta\src\main\java\com\bigcousin\chatroom\server\entrance" />
@@ -86,7 +123,7 @@
       <recent name="D:\code\Java codes\week14\BC-chat_beta\asset\icon" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.Test">
+  <component name="RunManager" selected="应用程序.ClientAPP">
     <configuration name="ClientAPP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.com.bigcousin.chatroom.client.app.ClientAPP" />
       <module name="BC-chat_beta" />
@@ -129,8 +166,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.ServerAPP" />
         <item itemvalue="应用程序.ClientAPP" />
+        <item itemvalue="应用程序.ServerAPP" />
       </list>
     </recent_temporary>
   </component>
@@ -280,23 +317,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/service/ChatServer.java</url>
-          <line>148</line>
+          <line>147</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/service/ChatServer.java</url>
-          <line>141</line>
+          <line>140</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/server/service/ChatServer.java</url>
-          <line>108</line>
+          <line>107</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/core/ChatClient.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="25" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/BubblePanel.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -305,8 +342,12 @@
         <watch expression="serverSocket" />
         <watch expression="rooms.get(i).getRoomInfo().getName()" />
         <watch expression="object" language="JAVA" />
-        <watch expression="userInfo" />
+        <watch expression="userInfo" language="JAVA" />
+        <watch expression="roomInfos" />
       </configuration>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/core/ChatClient.java" line="251">
+        <watch expression="((ChatClient)this).roomSelectionWindow" language="JAVA" custom="main.java.com.bigcousin.chatroom.client.core.ChatClient" />
+      </inline-watch>
     </watches-manager>
   </component>
 </project>

@@ -20,4 +20,8 @@ public class ChatMessage extends Message implements Serializable {
     public String toString() {
         return userInfo.getNickname()+":"+content;
     }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
 }
