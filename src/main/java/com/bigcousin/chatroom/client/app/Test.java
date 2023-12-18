@@ -3,10 +3,16 @@ package main.java.com.bigcousin.chatroom.client.app;
 import main.java.com.bigcousin.chatroom.client.controller.MainController;
 import main.java.com.bigcousin.chatroom.client.core.ChatClient;
 
+import java.util.Scanner;
+
 public class Test {
     public static void main(String[] args){
-        ChatClient chatClient = new ChatClient("127.0.0.1", 12345);
+        Scanner scanner=new Scanner(System.in);
+        String serverAddress=scanner.next();
+        ChatClient chatClient = new ChatClient(serverAddress, 8888);
+        System.out.println("hello,Cui");
         chatClient.login("Bigcousin");
-
+        chatClient.selectRoom("BigCousin'Chatroom1");
+        //chatClient.getUserInfo();
     }
 }

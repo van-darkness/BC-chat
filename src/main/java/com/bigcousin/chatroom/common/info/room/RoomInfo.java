@@ -10,9 +10,11 @@ public class RoomInfo implements Serializable {
     public RoomInfo(String name,int max_size,int id){
         this.max_size=max_size;
         this.name=name;
-
+        this.id=id;
         current_num=0;
     }
+
+
 
     public int getId() {
         return id;
@@ -28,5 +30,19 @@ public class RoomInfo implements Serializable {
 
     public int getCurrent_num() {
         return current_num;
+    }
+
+    @Override
+    public String toString() {
+        return "RoomInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", max_size=" + max_size +
+                ", current_num=" + current_num +
+                '}';
+    }
+
+    public void setCurrent_num(int size) {
+        current_num=size;
     }
 }

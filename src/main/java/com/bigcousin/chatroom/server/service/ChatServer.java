@@ -1,10 +1,9 @@
 package main.java.com.bigcousin.chatroom.server.service;
 
 import main.java.com.bigcousin.chatroom.common.info.room.RoomInfo;
-import main.java.com.bigcousin.chatroom.common.info.room.RoomInfoList;
 import main.java.com.bigcousin.chatroom.common.info.user.UserInfo;
 import main.java.com.bigcousin.chatroom.common.message.*;
-import main.java.com.bigcousin.chatroom.common.request.Request;
+import main.java.com.bigcousin.chatroom.common.request.ClientRequest;
 import main.java.com.bigcousin.chatroom.server.exception.NullMessageException;
 import main.java.com.bigcousin.chatroom.server.exception.RoomCreatException;
 
@@ -12,21 +11,16 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-import static main.java.com.bigcousin.chatroom.common.request.RequestType.GET_LIST_ROOM;
-import static main.java.com.bigcousin.chatroom.common.request.RequestType.GET_LIST_USER;
-
 public class ChatServer {
-    private final int PORT = 12345;
+    private final int PORT = 8888;
     private ServerSocket serverSocket;
     private InetAddress serverAddress;
-    private RoomInfoList roomInfoList;
     private ArrayList<Room> rooms;
     private ArrayList<ClientHandler> clientHandlers;
     private ArrayList<UserInfo> userInfos;
 
     public ChatServer() {
         clientHandlers=new ArrayList<>();
-        roomInfoList=new RoomInfoList();
         userInfos=new ArrayList<>();
         rooms=new ArrayList<>();
         try {
@@ -42,7 +36,8 @@ public class ChatServer {
             throw new RuntimeException(e);
         }
         try {
-            creatRoom("BigCousin'Chatroom");
+            creatRoom("BigCousin'Chatroom1");
+            creatRoom("BigCousin'Chatroom2");
         } catch (RoomCreatException e) {
             throw new RuntimeException(e);
         }
@@ -51,17 +46,18 @@ public class ChatServer {
     }
     private void creatRoom(String roomName) throws RoomCreatException {
         for(int i=0;i<rooms.size();i++){
-            if(rooms.get(i).getRoomInfo().getName().equals(roomName));
-            throw new RoomCreatException(roomName);
+            if(rooms.get(i).getRoomInfo().getName().equals(roomName)){
+                throw new RoomCreatException(roomName);
+            }
+
         }
         Room room=new Room(new RoomInfo(roomName,10,rooms.size()));
         rooms.add(room);
-        roomInfoList.add(room.getRoomInfo());
+        System.out.println("创建新房间:"+room.getRoomInfo().toString());
         // 获取更新后的房间列表
         List<RoomInfo> roomInfos = getRoomInfos();
-
         // 广播新的房间列表
-        broadcastObject(roomInfos);
+        //broadcastObject(roomInfos);
     }
     public void addClientHandler(ClientHandler handler) {
         synchronized (clientHandlers) {
@@ -79,8 +75,10 @@ public class ChatServer {
     }
     public void addUserToRoom(UserInfo userInfo,int i){
         //i事要加入的房间在房间列表中的序号
+
         userInfo.setRoomInfo(rooms.get(i).getRoomInfo());
         rooms.get(i).addUser(userInfo);
+        System.out.println("已将用户添加至房间:"+rooms.get(i).getRoomInfo().getName());
     }
     public void addUserToRoom(UserInfo userInfo,String roomName){
         for(int i=0;i<rooms.size();i++){
@@ -110,6 +108,7 @@ public class ChatServer {
                     socket=serverSocket.accept();
                     ClientHandler clientHandler=new ClientHandler(socket);
                     clientHandlers.add(clientHandler);
+                    clientHandler.start();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -150,7 +149,7 @@ public class ChatServer {
                         UserInfo newUserInfo=new UserInfo(loginMessage.getNickname(),userInfos.size());
                         this.userInfo=newUserInfo;
                         userInfos.add(userInfo);
-
+                        objectOutputStream.writeObject(userInfo);
                     }
                 }
             } catch (IOException e) {
@@ -159,9 +158,7 @@ public class ChatServer {
                 throw new RuntimeException(e);
             }
         }
-
         public void run() {
-
             try {
                 if (objectInputStream == null) {
                     throw new IOException("Input stream is null");
@@ -185,6 +182,10 @@ public class ChatServer {
             try {
                 List<RoomInfo> roomInfos = ChatServer.this.getRoomInfos(); // 获取房间信息列表
                 objectOutputStream.writeObject(roomInfos); // 发送房间信息列表
+                System.out.println("已发送房间列表数据");
+                for (int i=0;i<roomInfos.size();i++){
+                 System.out.println(roomInfos.get(i));
+                }
                 objectOutputStream.flush();
             } catch (IOException e) {
                 e.printStackTrace(); // 处理异常，例如记录日志
@@ -205,12 +206,15 @@ public class ChatServer {
                 } else if (object instanceof LoginMessage) {
                     //默认已登录，暂时不处理
                 } else if (object instanceof RoomSelectionMessage) {
+
                     RoomSelectionMessage roomSelectionMessage=(RoomSelectionMessage) object;
+                    System.out.println("获取进入房间请求；"+"->"+roomSelectionMessage.getRoomName());
                     handleRoomSelectionMessage(roomSelectionMessage);
-                } else if (object instanceof Request) {
-                    Request request = (Request) object;
-                    switch (request.getRequestTypel()) {
+                } else if (object instanceof ClientRequest) {
+                    ClientRequest clientRequest = (ClientRequest) object;
+                    switch (clientRequest.getRequestTypel()) {
                         case GET_LIST_ROOM:
+                            System.out.println("准备发送房间列表");
                             sendRoomList();
                             break;
                         case GET_LIST_USER:
@@ -246,6 +250,8 @@ public class ChatServer {
                 for(int i=0;i<rooms.size();i++){
                     if(roomname.equals(rooms.get(i).getRoomInfo().getName())){
                         addUserToRoom(userInfo,i);
+                        //向客户端发送房间信息
+                        sendObject((Object) rooms.get(i).getRoomInfo());
                         return;
                     }
                 }
@@ -257,6 +263,7 @@ public class ChatServer {
                 }
             }else {
                 //切换房间
+                System.out.println("开始处理请求");
                 Room currentRoom=findUserRoom(userInfo);
                 if(currentRoom!=null){
                     currentRoom.removeUser(userInfo);
@@ -265,6 +272,7 @@ public class ChatServer {
                 for(int i=0;i<rooms.size();i++){
                     if(roomname.equals(rooms.get(i).getRoomInfo().getName())){
                         addUserToRoom(userInfo,i);
+
                         return;
                     }
                 }
@@ -276,6 +284,7 @@ public class ChatServer {
                 }
             }
         }
+
         private Room findUserRoom(UserInfo user) {
             for (Room room : rooms) {
                 if (room.getUserInfos().contains(user)) {
@@ -321,12 +330,12 @@ public class ChatServer {
             }
         }
     }
-    public List<RoomInfo> getRoomInfos() {
-        //使用固定的List类发送房间列表保证其封装性
+    private List<RoomInfo> getRoomInfos() {
         List<RoomInfo> roomInfos = new ArrayList<>();
         for (Room room : rooms) {
             roomInfos.add(room.getRoomInfo());
         }
         return roomInfos;
     }
+
 }

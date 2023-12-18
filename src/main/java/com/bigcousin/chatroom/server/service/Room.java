@@ -6,18 +6,23 @@ import main.java.com.bigcousin.chatroom.common.info.user.UserInfo;
 import java.util.ArrayList;
 
 public class Room {
-    //后续可能需要使用接口来规范房间的用户管理的方法
     private RoomInfo roomInfo;
     private ArrayList<UserInfo> userInfos;
-    public Room(RoomInfo roomInfo){
-        userInfos=new ArrayList<>();
+
+    public Room(RoomInfo roomInfo) {
+        this.roomInfo = roomInfo;  // 将传入的 roomInfo 对象分配给成员变量
+        userInfos = new ArrayList<>();
     }
-    public void addUser(UserInfo userInfo){
+
+    public void addUser(UserInfo userInfo) {
         userInfos.add(userInfo);
+        roomInfo.setCurrent_num(userInfos.size()); // 更新当前房间人数
     }
-    public void removeUser(UserInfo userInfo){
+
+    public void removeUser(UserInfo userInfo) {
         userInfos.remove(userInfo);
-        //后续添加广播消息的功能
+        roomInfo.setCurrent_num(userInfos.size()); // 更新当前房间人数
+        // 后续添加广播消息的功能
     }
 
     public RoomInfo getRoomInfo() {
@@ -28,4 +33,5 @@ public class Room {
         return userInfos;
     }
 
+    // ... 其他方法 ...
 }

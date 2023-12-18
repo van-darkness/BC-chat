@@ -6,7 +6,7 @@ import main.java.com.bigcousin.chatroom.client.core.ChatClient;
 
 public class ClientAPP {
     public static void main(String[] args) {
-        MainController mainController=new MainController("127.0.0.1",12345);
+        MainController mainController=new MainController("127.0.0.1",8888);
         mainController.showLoginWindows();
     }
 }
