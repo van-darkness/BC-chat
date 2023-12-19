@@ -14,24 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c8a9b1e-9e19-4dd3-b78a-828990978310" name="更改" comment="修改登录信息传输BUG，完善项目业务逻辑">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Clent.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Client_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ClientTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Server_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Server.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BC-chat_beta.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/bin/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/app/ClientAPP.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/app/ClientAPP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/core/ChatClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/core/ChatClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/ui/ChatRoomWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/ui/ChatRoomWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/ui/LoginWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/main/java/com/bigcousin/chatroom/client/ui/LoginWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/app/ClientAPP.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/app/ClientAPP.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/BubblePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/BubblePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/LoginWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/BC-chat_beta/main/java/com/bigcousin/chatroom/client/ui/LoginWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/app/ClientAPP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/app/ClientAPP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/BubblePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/BubblePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/LoginWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bigcousin/chatroom/client/ui/LoginWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +89,7 @@
       <recent name="D:\code\Java codes\week14\BC-chat_beta\asset\icon" />
     </key>
   </component>
-  <component name="RunManager" selected="应用程序.ServerAPP">
+  <component name="RunManager" selected="应用程序.ClientAPP">
     <configuration name="ClientAPP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.java.com.bigcousin.chatroom.client.app.ClientAPP" />
       <module name="BC-chat_beta" />
@@ -148,8 +132,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="应用程序.ServerAPP" />
         <item itemvalue="应用程序.ClientAPP" />
+        <item itemvalue="应用程序.ServerAPP" />
       </list>
     </recent_temporary>
   </component>

@@ -4,9 +4,14 @@ import com.sun.tools.javac.Main;
 import main.java.com.bigcousin.chatroom.client.controller.MainController;
 import main.java.com.bigcousin.chatroom.client.core.ChatClient;
 
+import java.util.Scanner;
+
 public class ClientAPP {
     public static void main(String[] args) {
-        MainController mainController = new MainController("172.23.250.86", 8888);
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("输入目标ip地址");
+        String ip=scanner.next();
+        MainController mainController = new MainController(ip, 8888);
         mainController.showLoginWindows();
     }
 }
