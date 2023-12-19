@@ -21,11 +21,9 @@ public class BubblePanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
-
         // 绘制气泡
         g2d.setColor(backgroundColor);
         g2d.fillRoundRect(10, 10, getWidth() - 20, getHeight() - 20, 25, 25);
-
         // 绘制文字
         g2d.setColor(Color.BLACK);
         g2d.drawString(nickname, 20, 25);

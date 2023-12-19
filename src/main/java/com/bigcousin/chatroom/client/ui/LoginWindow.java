@@ -85,14 +85,11 @@ public class LoginWindow extends JFrame {
 
         // 更多空白区域
         panel.add(Box.createVerticalGlue());
-
         // 设置窗口图标
         ImageIcon icon = new ImageIcon("src/main/resources/images/image.jpg");
         Image image = icon.getImage();
         setIconImage(image);
-
         setVisible(true);
     }
-
     // 其他方法...
 }
