@@ -11,6 +11,10 @@
 - **联系方式：** 18855794326
 - **GitHub：** [BigCousin的GitHub](https://github.com/van-drakness)
 
+- **姓名：** QianyiZSX
+- **角色：** 参与者（乙方）
+- **联系方式：** 17706963287
+
 ### 辅助
 - chatGPT
 - New Bing 
