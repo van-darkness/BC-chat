@@ -8,12 +8,10 @@
 
 - **姓名：** BigCousin
 - **角色：** 项目创始人
-- **联系方式：** 18855794326
 - **GitHub：** [BigCousin的GitHub](https://github.com/van-drakness)
 
 - **姓名：** QianyiZSX
 - **角色：** 参与者
-- **联系方式：** 17706963287
 - **GitHub：** [QianyiZSX的GitHub](https://github.com/QianyiZSX)
 
 ### 辅助
