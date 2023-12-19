@@ -14,6 +14,7 @@
 - **姓名：** QianyiZSX
 - **角色：** 参与者（乙方）
 - **联系方式：** 17706963287
+- **GitHub：** [QianyiZSX的GitHub](https://github.com/QianyiZSX)
 
 ### 辅助
 - chatGPT
