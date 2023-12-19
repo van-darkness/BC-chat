@@ -8,7 +8,7 @@
 
 - **姓名：** BigCousin
 - **角色：** 项目创始人
-- **GitHub：** [BigCousin的GitHub](https://github.com/van-drakness)
+- **GitHub：** [BigCousin的GitHub](https://github.com/van-darkness)
 
 - **姓名：** QianyiZSX
 - **角色：** 参与者
